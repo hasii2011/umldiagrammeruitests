@@ -13,10 +13,7 @@ from pyautogui import typewrite
 
 from pymsgbox import alert
 
-from umlshapes.preferences.UmlPreferences import UmlPreferences
-
-from umlshapes.types.UmlPosition import UmlPosition
-
+from umldiagrammeruitests.Common import DEFAULT_METHOD_NAME
 from umldiagrammeruitests.Common import DOUBLE_CLICK_INTERVAL
 from umldiagrammeruitests.Common import PAUSE_AFTER_EACH_CALL
 from umldiagrammeruitests.Common import TYPE_WRITE_INTERVAL
@@ -58,7 +55,7 @@ MATCH_STARTS_WITH_ID: str = f'id={MATCH_BETWEEN_QUOTES}'
 EMPTY_ID:             str = ''
 
 
-LOC_WHERE_CLASS_IS_CREATED:       UmlPosition = UmlPosition(x=680, y=370)
+LOC_WHERE_CLASS_IS_CREATED:       Location = Location(x=680, y=370)
 
 BASENAME:                   str = 'uiclasstest'
 CLASS_PROJECT_FILENAME:     Path = Path(f'{osSep}tmp{osSep}{BASENAME}.udt')
@@ -84,7 +81,7 @@ def addParameterMethod(dialogLocator: ClassDialogLocator):
         clicks=2,
         interval=DOUBLE_CLICK_INTERVAL
     )
-    press('backspace', presses=len(defaultMethodName))
+    press('backspace', presses=len(DEFAULT_METHOD_NAME))
     typewrite('floatParameter', interval=TYPE_WRITE_INTERVAL)
 
     press('tab')
@@ -126,11 +123,6 @@ if __name__ == '__main__':
     pyautogui.FAILSAFE = True
 
     setupLogging()
-
-    umlPreferences: UmlPreferences = UmlPreferences()
-
-    defaultMethodName:     str   = umlPreferences.defaultNameMethod
-    defaultFieldName:      str   = umlPreferences.defaultNameField
 
     CLASS_PROJECT_FILENAME.unlink(missing_ok=True)
     DECOMPRESSED_CLASS_PROJECT.unlink(missing_ok=True)

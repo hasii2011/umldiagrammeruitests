@@ -6,8 +6,6 @@ import pyautogui
 from pyautogui import click
 from pymsgbox import alert
 
-from umlshapes.types.UmlPosition import UmlPosition
-
 from umldiagrammeruitests.Common import PAUSE_AFTER_EACH_CALL
 from umldiagrammeruitests.Common import createClassPair
 from umldiagrammeruitests.Common import displayAppropriateDialog
@@ -46,8 +44,8 @@ COMPOSITION_XML_FILENAME:         str = f'{BASENAME}.xml'
 COMPOSITION_FILENAME:             Path = Path(f'/tmp/{BASENAME}.udt')
 DECOMPRESSED_COMPOSITION_PROJECT: Path = Path(f'/tmp/{COMPOSITION_XML_FILENAME}')
 
-LOC_WHERE_COMPOSER_IS_CREATED: UmlPosition = UmlPosition(x=475, y=255)
-LOC_WHERE_COMPOSED_IS_CREATED: UmlPosition = UmlPosition(x=825, y=550)
+LOC_WHERE_COMPOSER_IS_CREATED: Location = Location(x=475, y=255)
+LOC_WHERE_COMPOSED_IS_CREATED: Location = Location(x=825, y=550)
 
 
 if __name__ == '__main__':

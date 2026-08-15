@@ -23,8 +23,6 @@ from pyautogui import typewrite
 
 from pymsgbox import alert
 
-from umlshapes.types.UmlPosition import UmlPosition
-
 from umldiagrammeruitests.ToolBarClicker import ToolBarClicker
 from umldiagrammeruitests.locators.BaseLocator import Location
 from umldiagrammeruitests.locators.ClassDialogLocator import ClassDialogLocator
@@ -46,11 +44,11 @@ DOUBLE_CLICK_INTERVAL:  float = 0.2
 
 LOC_TOOLBAR_Y: int = 65
 
-LOC_CLASS_TOOL_BAR:         UmlPosition = UmlPosition(x=730, y=LOC_TOOLBAR_Y)
+LOC_CLASS_TOOL_BAR:         Location = Location(x=730, y=LOC_TOOLBAR_Y)
 
-LOC_CLICK_SAVE_PROJECT:      UmlPosition = UmlPosition(x=395, y=LOC_TOOLBAR_Y)
-LOC_CLICK_SAVE_AS_NAME:      UmlPosition = UmlPosition(x=1420, y=350)
-LOC_CLICK_SAVE_BUTTON:       UmlPosition = UmlPosition(x=1740, y=755)
+LOC_CLICK_SAVE_PROJECT:      Location = Location(x=395, y=LOC_TOOLBAR_Y)
+LOC_CLICK_SAVE_AS_NAME:      Location = Location(x=1420, y=350)
+LOC_CLICK_SAVE_BUTTON:       Location = Location(x=1740, y=755)
 
 MOVE_TO_DELAY: float = 0.9
 
@@ -64,7 +62,7 @@ TEST_FORMAT:   str = '%(levelname)s: %(module)s: %(message)s'
 #
 # This is fragile; Has to agree with the UML Diagrammer project
 DIAGRAMMER_IN_TEST_MODE: Path = Path('/tmp/UmlDiagrammer.txt')
-
+DEFAULT_METHOD_NAME:     str  = 'MethodName'
 
 def setupLogging():
     basicConfig(
@@ -204,12 +202,12 @@ def renameClass(newClassName: str, locator: ClassDialogLocator):
     press(keys='backspace', presses=BACKSPACES_CLEAR_CLASS_NAME)
     typewrite(newClassName)
 
-def createClassPair(class1Location: UmlPosition, class2Location: UmlPosition, class1Name: str, class2Name: str):
+def createClassPair(class1Location: Location, class2Location: Location, class1Name: str, class2Name: str):
 
     createUmlClass(classLocation=class1Location, className=class1Name)
     createUmlClass(classLocation=class2Location, className=class2Name)
 
-def createUmlClass(classLocation: UmlPosition, className: str):
+def createUmlClass(classLocation: Location, className: str):
 
     classDialogLocator: ClassDialogLocator = ClassDialogLocator()
 

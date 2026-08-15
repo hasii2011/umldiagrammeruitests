@@ -7,10 +7,6 @@ from pyautogui import click
 
 from pymsgbox import alert
 
-from umlshapes.types.UmlPosition import UmlPosition
-
-from umlshapes.preferences.UmlPreferences import UmlPreferences
-
 from umldiagrammeruitests.Common import PAUSE_AFTER_EACH_CALL
 from umldiagrammeruitests.Common import createClassPair
 from umldiagrammeruitests.Common import displayAppropriateDialog
@@ -48,8 +44,8 @@ INHERITANCE_PROJECT_FILENAME: Path = Path(f'/tmp/{BASENAME}.udt')
 INHERITANCE_XML_FILENAME:         str = f'{BASENAME}.xml'
 DECOMPRESSED_INHERITANCE_PROJECT: Path = Path(f'/tmp/{INHERITANCE_XML_FILENAME}')
 
-LOC_CREATE_BASE_CLASS: UmlPosition = UmlPosition(x=400, y=200)
-LOC_CREATE_SUB_CLASS:  UmlPosition = UmlPosition(x=900, y=500)
+LOC_CREATE_BASE_CLASS: Location = Location(x=400, y=200)
+LOC_CREATE_SUB_CLASS:  Location = Location(x=900, y=500)
 
 
 SUBCLASS_NAME:    str = 'SubClass'
@@ -59,8 +55,6 @@ if __name__ == '__main__':
 
     pyautogui.PAUSE   = PAUSE_AFTER_EACH_CALL
     pyautogui.FAILSAFE = True
-
-    umlPreferences: UmlPreferences = UmlPreferences()
 
     INHERITANCE_PROJECT_FILENAME.unlink(missing_ok=True)
     DECOMPRESSED_INHERITANCE_PROJECT.unlink(missing_ok=True)
