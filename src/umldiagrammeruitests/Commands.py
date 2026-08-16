@@ -21,11 +21,11 @@ from click import ClickException
 
 from pyautogui import ImageNotFoundException
 
-from umldiagrammeruitests.CompositionTest import CompositionTest
-from umldiagrammeruitests.AggregationTest import AggregationTest
+from umldiagrammeruitests.AggregationVerifier import AggregationVerifier
+from umldiagrammeruitests.CompositionVerifier import CompositionVerifier
+from umldiagrammeruitests.InheritanceVerifier import InheritanceVerifier
 
 from umldiagrammeruitests.Common import PAUSE_AFTER_EACH_CALL
-from umldiagrammeruitests.InheritanceTest import InheritanceTest
 
 from umldiagrammeruitests.commands.Environment import Environment
 
@@ -92,8 +92,8 @@ def inheritance(environment: Environment):
     Execute the create an inheritance relationship test
     """
     secho(f'{environment}')     # temp until we start using it
-    inheritanceTest: InheritanceTest = InheritanceTest()
-    inheritanceTest.execute()
+    inheritanceVerifier: InheritanceVerifier = InheritanceVerifier()
+    inheritanceVerifier.execute()
 
 
 @uitest.command(name='composition')
@@ -104,8 +104,8 @@ def composition(environment: Environment):
     Execute the create a composition relationship test
     """
     secho(f'{environment}')     # temp until we start using it
-    compositionTest: CompositionTest = CompositionTest()
-    compositionTest.execute()
+    compositionVerifier: CompositionVerifier = CompositionVerifier()
+    compositionVerifier.execute()
 
 @uitest.command(name='aggregation')
 @pass_obj
@@ -115,8 +115,8 @@ def aggregation(environment: Environment):
     Execute the create an aggregation relationship test
     """
     secho(f'{environment}')     # temp until we start using it
-    aggregationTest: AggregationTest = AggregationTest()
-    aggregationTest.execute()
+    aggregationVerifier: AggregationVerifier = AggregationVerifier()
+    aggregationVerifier.execute()
 
 
 @uitest.command(name='checkClass')

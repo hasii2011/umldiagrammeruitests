@@ -6,7 +6,7 @@ from pathlib import Path
 
 from pyautogui import click
 
-from umldiagrammeruitests.BaseTest import BaseTest
+from umldiagrammeruitests.BaseVerifier import BaseVerifier
 from umldiagrammeruitests.locators.BaseLocator import Location
 
 #
@@ -40,7 +40,7 @@ LOC_WHERE_AGGREGATOR_IS_CREATED: Location = Location(x=475, y=255)
 LOC_WHERE_AGGREGATED_IS_CREATED: Location = Location(x=825, y=550)
 
 
-class AggregationTest(BaseTest):
+class AggregationVerifier(BaseVerifier):
     
     def __init__(self):
         super().__init__()

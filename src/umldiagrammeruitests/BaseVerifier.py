@@ -23,7 +23,7 @@ from pymsgbox import alert
 
 from click import ClickException
 
-from umldiagrammeruitests.AbstractTest import AbstractTest
+from umldiagrammeruitests.AbstractVerifier import AbstractVerifier
 
 from umldiagrammeruitests.Common import BACKSPACES_CLEAR_CLASS_NAME
 from umldiagrammeruitests.Common import MOVE_TO_DELAY
@@ -47,7 +47,7 @@ ID_NAME_MATCH: str = '(?:id|ModelLink name)=["]([^"]*)["]'
 
 EMPTY_ID: str = ''
 
-class BaseTest(AbstractTest):
+class BaseVerifier(AbstractVerifier):
     def __init__(self):
 
         self.bLogger: Logger = getLogger(__name__)

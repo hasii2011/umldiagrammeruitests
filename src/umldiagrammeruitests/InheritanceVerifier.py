@@ -1,22 +1,12 @@
-#!/usr/bin/env python
 
+from logging import Logger
+from logging import getLogger
 from pathlib import Path
 
-import pyautogui
 from pyautogui import click
 
-from pymsgbox import alert
-
-from umldiagrammeruitests.Common import PAUSE_AFTER_EACH_CALL
-from umldiagrammeruitests.Common import createClassPair
-from umldiagrammeruitests.Common import displayAppropriateDialog
-from umldiagrammeruitests.Common import isAppRunning
-from umldiagrammeruitests.Common import makeAppActive
-from umldiagrammeruitests.Common import wasTestSuccessful
-from umldiagrammeruitests.SaveAsProject import SaveAsProject
-from umldiagrammeruitests.ToolBarClicker import ToolBarClicker
+from umldiagrammeruitests.BaseVerifier import BaseVerifier
 from umldiagrammeruitests.locators.BaseLocator import Location
-from umldiagrammeruitests.locators.UmlClassLocator import UmlClassLocator
 
 #
 # Removed the IDs
@@ -38,10 +28,10 @@ GOLDEN_INHERITANCE_XML: str = (
     '</UmlProject>'
 )
 
-BASENAME:                     str  = 'inheritancetest'
-INHERITANCE_PROJECT_FILENAME: Path = Path(f'/tmp/{BASENAME}.udt')
+BASENAME:                 str  = 'inheritancetest'
+INHERITANCE_XML_FILENAME: str = f'{BASENAME}.xml'
 
-INHERITANCE_XML_FILENAME:         str = f'{BASENAME}.xml'
+INHERITANCE_PROJECT_FILENAME:     Path = Path(f'/tmp/{BASENAME}.udt')
 DECOMPRESSED_INHERITANCE_PROJECT: Path = Path(f'/tmp/{INHERITANCE_XML_FILENAME}')
 
 LOC_CREATE_BASE_CLASS: Location = Location(x=400, y=200)
@@ -51,48 +41,43 @@ LOC_CREATE_SUB_CLASS:  Location = Location(x=900, y=500)
 SUBCLASS_NAME:    str = 'SubClass'
 BASECLASS_NAME:   str = 'TheBaseClass'
 
-if __name__ == '__main__':
+class InheritanceVerifier(BaseVerifier):
+    
+    def __init__(self):
+        
+        super().__init__()
+        self.logger: Logger = getLogger(__name__)
 
-    pyautogui.PAUSE   = PAUSE_AFTER_EACH_CALL
-    pyautogui.FAILSAFE = True
+    def execute(self):
 
-    INHERITANCE_PROJECT_FILENAME.unlink(missing_ok=True)
-    DECOMPRESSED_INHERITANCE_PROJECT.unlink(missing_ok=True)
-
-    if isAppRunning() is False:
-        alert(text='The diagrammer is not running', title='Hey, bonehead', button='OK')
-    else:
-        makeAppActive()
+        super().execute()
 
         INHERITANCE_PROJECT_FILENAME.unlink(missing_ok=True)
         DECOMPRESSED_INHERITANCE_PROJECT.unlink(missing_ok=True)
 
-        umlClassLocator: UmlClassLocator    = UmlClassLocator()
+        self._bringUmlDiagrammerToForeground()
 
-        createClassPair(
+        self._createUmlClassPair(
             class1Location=LOC_CREATE_BASE_CLASS,
             class1Name=BASECLASS_NAME,
             class2Location=LOC_CREATE_SUB_CLASS,
             class2Name=SUBCLASS_NAME
         )
-        toolBarClicker: ToolBarClicker = ToolBarClicker()
-        toolBarClicker.clickInheritance()
 
-        subClassLocation: Location = umlClassLocator.subClass
+        self._toolBarClicker.clickInheritance()
+
+        subClassLocation: Location = self._umlClassLocator.subClass
         click(x=subClassLocation.x, y=subClassLocation.y)
-        print(f'{subClassLocation=}')
+        self.logger.info(f'{subClassLocation=}')
 
-        baseClassLocation: Location = umlClassLocator.baseClass
+        baseClassLocation: Location = self._umlClassLocator.baseClass
         click(x=baseClassLocation.x, y=baseClassLocation.y)
-        print(f'{baseClassLocation=}')
+        self.logger.info(f'{baseClassLocation=}')
 
-        saveAsProject: SaveAsProject = SaveAsProject()
-        saveAsProject.execute(projectFileName=str(INHERITANCE_PROJECT_FILENAME))
+        self._saveAsProject.execute(projectFileName=str(INHERITANCE_PROJECT_FILENAME))
 
-        success: bool = wasTestSuccessful(
+        self._verifyTest(
             projectFileName=INHERITANCE_PROJECT_FILENAME,
             decompressedProjectFileName=DECOMPRESSED_INHERITANCE_PROJECT,
             goldenXml=GOLDEN_INHERITANCE_XML
         )
-
-        displayAppropriateDialog(status=success)

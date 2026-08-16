@@ -3,7 +3,7 @@ from abc import ABC
 from abc import abstractmethod
 
 
-class AbstractTest(ABC):
+class AbstractVerifier(ABC):
 
     @abstractmethod
     def execute(self):

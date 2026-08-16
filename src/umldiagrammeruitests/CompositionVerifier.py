@@ -5,7 +5,7 @@ from pathlib import Path
 
 from pyautogui import click
 
-from umldiagrammeruitests.BaseTest import BaseTest
+from umldiagrammeruitests.BaseVerifier import BaseVerifier
 from umldiagrammeruitests.locators.BaseLocator import Location
 
 #
@@ -38,7 +38,7 @@ DECOMPRESSED_COMPOSITION_PROJECT: Path = Path(f'/tmp/{COMPOSITION_XML_FILENAME}'
 LOC_WHERE_COMPOSER_IS_CREATED: Location = Location(x=475, y=255)
 LOC_WHERE_COMPOSED_IS_CREATED: Location = Location(x=825, y=550)
 
-class CompositionTest(BaseTest):
+class CompositionVerifier(BaseVerifier):
     def __init__(self):
         
         super().__init__()
