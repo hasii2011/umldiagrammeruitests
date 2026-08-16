@@ -30,7 +30,7 @@ class CommonImageLocator(BaseLocator):
         super().__init__(confidence=confidence, grayScale=grayScale, resourcePath=resourcePath)
         self.logger: Logger = getLogger(__name__)
 
-        self.logger.info(f'Location Confidence: {self._confidence}')
+        self.logger.info(f'Location Confidence: {self._confidence:.2f}')
 
     @property
     def saveAsProjectNameTextInput(self) -> Location:

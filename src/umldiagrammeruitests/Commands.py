@@ -1,6 +1,11 @@
 
+from typing import Any
+from typing import Callable
+
 import logging
 import logging.config
+
+from functools import wraps
 
 from json import loads as jsonLoads
 
@@ -12,6 +17,9 @@ from click import pass_context
 from click import pass_obj
 from click import secho
 from click import version_option
+from click import ClickException
+
+from pyautogui import ImageNotFoundException
 
 from umldiagrammeruitests.AggregationTest import AggregationTest
 from umldiagrammeruitests.Common import PAUSE_AFTER_EACH_CALL
@@ -34,6 +42,18 @@ def setUpLogging():
     logging.logProcesses = False
     logging.logThreads = False
 
+def handleUiTestErrors(func: Callable[..., Any]) -> Callable[..., Any]:
+    """
+    Decorator that catches ImageNotFoundException and formats Click output.
+    """
+    @wraps(func)
+    def wrapper(*args: Any, **kwargs: Any) -> Any:
+        try:
+            return func(*args, **kwargs)
+        except ImageNotFoundException as err:
+            secho(f'Image Lookup Failure: {err}', fg='red', bold=True)
+            raise ClickException(f'Missing image on screen: {err}')
+    return wrapper
 
 @group(name='uitest')
 @version_option(version=f'{__version__}', message='%(prog)s version %(version)s')
@@ -62,6 +82,7 @@ def uitest(ctx, verbose: bool = False):
 
 @uitest.command(name='inheritance')
 @pass_obj
+@handleUiTestErrors
 def inheritance(environment: Environment):
     """
     Signs the internal python zipfile;  May optionally remove some bad files in test/zipimport_data
@@ -71,6 +92,7 @@ def inheritance(environment: Environment):
 
 @uitest.command(name='composition')
 @pass_obj
+@handleUiTestErrors
 def composition(environment: Environment):
     """
     Signs the internal python zipfile;  May optionally remove some bad files in test/zipimport_data
@@ -80,17 +102,18 @@ def composition(environment: Environment):
 
 @uitest.command(name='aggregation')
 @pass_obj
+@handleUiTestErrors
 def aggregation(environment: Environment):
     """
     Execute the create an aggregation test
     """
-    secho(f'I am here -- {environment=}', reverse=True)
     aggregationTest: AggregationTest = AggregationTest()
     aggregationTest.execute()
 
 
 @uitest.command(name='checkClass')
 @pass_obj
+@handleUiTestErrors
 def checkClass(environment: Environment):
     """
     Signs the internal python zipfile;  May optionally remove some bad files in test/zipimport_data

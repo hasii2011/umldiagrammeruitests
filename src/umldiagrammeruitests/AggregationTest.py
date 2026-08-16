@@ -1,10 +1,9 @@
 
 from logging import Logger
 from logging import getLogger
+
 from pathlib import Path
 
-from click import secho
-from pyautogui import ImageNotFoundException
 from pyautogui import click
 
 from umldiagrammeruitests.BaseTest import BaseTest
@@ -51,38 +50,34 @@ class AggregationTest(BaseTest):
 
         super().execute()
 
-        try:
-            self._bringUmlDiagrammerToForeground()
+        self._bringUmlDiagrammerToForeground()
 
-            AGGREGATION_FILENAME.unlink(missing_ok=True)
-            DECOMPRESSED_AGGREGATION_PROJECT.unlink(missing_ok=True)
+        AGGREGATION_FILENAME.unlink(missing_ok=True)
+        DECOMPRESSED_AGGREGATION_PROJECT.unlink(missing_ok=True)
 
-            self._createUmlClassPair(
-                class1Location=LOC_WHERE_AGGREGATOR_IS_CREATED,
-                class1Name='TheAggregator',
-                class2Location=LOC_WHERE_AGGREGATED_IS_CREATED,
-                class2Name='Aggregated'
-            )
+        self._createUmlClassPair(
+            class1Location=LOC_WHERE_AGGREGATOR_IS_CREATED,
+            class1Name='TheAggregator',
+            class2Location=LOC_WHERE_AGGREGATED_IS_CREATED,
+            class2Name='Aggregated'
+        )
 
-            self._toolBarClicker.clickAggregation()
+        self._toolBarClicker.clickAggregation()
 
-            aggregatorLocation: Location = self._umlClassLocator.aggregator
-            click(x=aggregatorLocation.x, y=aggregatorLocation.y)
-            self.logger.info(f'{aggregatorLocation=}')
+        aggregatorLocation: Location = self._umlClassLocator.aggregator
+        click(x=aggregatorLocation.x, y=aggregatorLocation.y)
+        self.logger.info(f'{aggregatorLocation=}')
 
-            aggregatedLocation: Location = self._umlClassLocator.aggregated
-            click(x=aggregatedLocation.x, y=aggregatedLocation.y)
-            self.logger.info(f'{aggregatedLocation=}')
+        aggregatedLocation: Location = self._umlClassLocator.aggregated
+        click(x=aggregatedLocation.x, y=aggregatedLocation.y)
+        self.logger.info(f'{aggregatedLocation=}')
 
-            self._saveAsProject.execute(projectFileName=str(AGGREGATION_FILENAME))
+        self._saveAsProject.execute(projectFileName=str(AGGREGATION_FILENAME))
 
-            success: bool = self._wasTestSuccessful(
-                projectFileName=AGGREGATION_FILENAME,
-                decompressedProjectFileName=DECOMPRESSED_AGGREGATION_PROJECT,
-                goldenXml=GOLDEN_AGGREGATION_XML
-            )
+        success: bool = self._wasTestSuccessful(
+            projectFileName=AGGREGATION_FILENAME,
+            decompressedProjectFileName=DECOMPRESSED_AGGREGATION_PROJECT,
+            goldenXml=GOLDEN_AGGREGATION_XML
+        )
 
-            self._displayAppropriateDialog(status=success)
-
-        except ImageNotFoundException as e:
-            secho(f'{e}')
+        self._displayAppropriateDialog(status=success)

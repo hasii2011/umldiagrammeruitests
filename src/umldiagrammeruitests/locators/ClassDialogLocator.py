@@ -33,7 +33,7 @@ class ClassDialogLocator(BaseLocator):
 
         super().__init__(confidence=confidence, grayScale=grayScale, resourcePath=resourcePath)
 
-        self.logger.info(f'Location Confidence: {self._confidence}')
+        self.logger.info(f'Location Confidence: {self._confidence:.2f}')
 
     @property
     def classNameTextInput(self) -> Location:
