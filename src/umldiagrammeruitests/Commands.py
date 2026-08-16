@@ -21,14 +21,17 @@ from click import ClickException
 
 from pyautogui import ImageNotFoundException
 
+from umldiagrammeruitests.CompositionTest import CompositionTest
 from umldiagrammeruitests.AggregationTest import AggregationTest
+
 from umldiagrammeruitests.Common import PAUSE_AFTER_EACH_CALL
+
 from umldiagrammeruitests.commands.Environment import Environment
 
 RESOURCES_PACKAGE_NAME:       str = 'umldiagrammeruitests.resources'
 JSON_LOGGING_CONFIG_FILENAME: str = 'loggingConfiguration.json'
 
-__version__: str = '0.5'
+__version__: str = '0.6'
 
 def setUpLogging():
     """
@@ -95,10 +98,10 @@ def inheritance(environment: Environment):
 @handleUiTestErrors
 def composition(environment: Environment):
     """
-    Signs the internal python zipfile;  May optionally remove some bad files in test/zipimport_data
+    Execute the create a composition test
     """
-    secho(f'I am here -- {environment=}')
-
+    compositionTest: CompositionTest = CompositionTest()
+    compositionTest.execute()
 
 @uitest.command(name='aggregation')
 @pass_obj

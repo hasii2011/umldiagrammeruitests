@@ -33,7 +33,7 @@ GOLDEN_AGGREGATION_XML: str = (
 )
 BASENAME:                         str  = 'aggregationtest'
 AGGREGATION_XML_FILENAME:         str = f'{BASENAME}.xml'
-AGGREGATION_FILENAME:             Path = Path(f'/tmp/{BASENAME}.udt')
+AGGREGATION_PROJECT_FILENAME:     Path = Path(f'/tmp/{BASENAME}.udt')
 DECOMPRESSED_AGGREGATION_PROJECT: Path = Path(f'/tmp/{AGGREGATION_XML_FILENAME}')
 
 LOC_WHERE_AGGREGATOR_IS_CREATED: Location = Location(x=475, y=255)
@@ -50,10 +50,10 @@ class AggregationTest(BaseTest):
 
         super().execute()
 
-        self._bringUmlDiagrammerToForeground()
-
-        AGGREGATION_FILENAME.unlink(missing_ok=True)
+        AGGREGATION_PROJECT_FILENAME.unlink(missing_ok=True)
         DECOMPRESSED_AGGREGATION_PROJECT.unlink(missing_ok=True)
+
+        self._bringUmlDiagrammerToForeground()
 
         self._createUmlClassPair(
             class1Location=LOC_WHERE_AGGREGATOR_IS_CREATED,
@@ -72,10 +72,10 @@ class AggregationTest(BaseTest):
         click(x=aggregatedLocation.x, y=aggregatedLocation.y)
         self.logger.info(f'{aggregatedLocation=}')
 
-        self._saveAsProject.execute(projectFileName=str(AGGREGATION_FILENAME))
+        self._saveAsProject.execute(projectFileName=str(AGGREGATION_PROJECT_FILENAME))
 
         success: bool = self._wasTestSuccessful(
-            projectFileName=AGGREGATION_FILENAME,
+            projectFileName=AGGREGATION_PROJECT_FILENAME,
             decompressedProjectFileName=DECOMPRESSED_AGGREGATION_PROJECT,
             goldenXml=GOLDEN_AGGREGATION_XML
         )
