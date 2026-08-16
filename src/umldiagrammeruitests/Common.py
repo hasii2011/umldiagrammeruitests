@@ -62,6 +62,7 @@ TEST_FORMAT:   str = '%(levelname)s: %(module)s: %(message)s'
 #
 # This is fragile; Has to agree with the UML Diagrammer project
 DIAGRAMMER_IN_TEST_MODE: Path = Path('/tmp/UmlDiagrammer.txt')
+# This is fragile; Has to agree with the UML Shapes preferences
 DEFAULT_METHOD_NAME:     str  = 'MethodName'
 
 def setupLogging():

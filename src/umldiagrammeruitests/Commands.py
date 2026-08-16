@@ -13,10 +13,12 @@ from click import pass_obj
 from click import secho
 from click import version_option
 
+from umldiagrammeruitests.AggregationTest import AggregationTest
+from umldiagrammeruitests.Common import PAUSE_AFTER_EACH_CALL
 from umldiagrammeruitests.commands.Environment import Environment
 
-RESOURCES_PACKAGE_NAME:       str = 'tests.resources'
-JSON_LOGGING_CONFIG_FILENAME: str = "testLoggingConfiguration.json"
+RESOURCES_PACKAGE_NAME:       str = 'umldiagrammeruitests.resources'
+JSON_LOGGING_CONFIG_FILENAME: str = 'loggingConfiguration.json'
 
 __version__: str = '0.5'
 
@@ -52,6 +54,12 @@ def uitest(ctx, verbose: bool = False):
 
     ctx.obj = environment
 
+    # I do not follow my global import convention
+    import pyautogui
+    pyautogui.PAUSE    = PAUSE_AFTER_EACH_CALL
+    pyautogui.FAILSAFE = True
+
+
 @uitest.command(name='inheritance')
 @pass_obj
 def inheritance(environment: Environment):
@@ -74,9 +82,11 @@ def composition(environment: Environment):
 @pass_obj
 def aggregation(environment: Environment):
     """
-    Signs the internal python zipfile;  May optionally remove some bad files in test/zipimport_data
+    Execute the create an aggregation test
     """
-    secho(f'I am here -- {environment=}')
+    secho(f'I am here -- {environment=}', reverse=True)
+    aggregationTest: AggregationTest = AggregationTest()
+    aggregationTest.execute()
 
 
 @uitest.command(name='checkClass')
@@ -91,4 +101,4 @@ def checkClass(environment: Environment):
 if __name__ == '__main__':
     # noinspection SpellCheckingInspection
 
-    uitest(['inheritance'])
+    uitest(['aggregation'])

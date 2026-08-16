@@ -16,7 +16,7 @@ RESOURCE_PATH: str = 'umldiagrammeruitests/resources/umlclasslocator'
 
 class UmlClassLocator(BaseLocator):
 
-    def __init__(self, confidence: float = CLASS_LOCATOR_CONFIDENCE):
+    def __init__(self, confidence: float = CLASS_LOCATOR_CONFIDENCE, grayScale: bool = True):
         """
 
         Args:
@@ -24,7 +24,7 @@ class UmlClassLocator(BaseLocator):
         """
         resourcePath = ResourceManager.computeResourcePath(resourcePath=RESOURCE_PATH, packageName=PACKAGE_NAME)
 
-        super().__init__(confidence=confidence, resourcePath=resourcePath)
+        super().__init__(confidence=confidence, grayScale=grayScale, resourcePath=resourcePath)
         self.logger: Logger = getLogger(__name__)
 
         self.logger.info(f'Location Confidence: {self._confidence}')

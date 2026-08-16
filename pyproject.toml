@@ -13,11 +13,11 @@ maintainers = [{name = 'Humberto A. Sanchez II', email = 'Humberto.A.Sanchez.II@
 keywords = ['graph, layout, python, uml, test']
 
 dependencies = [
-    'click>=8.0.0',
+    'click>=8.4.2',
     'pyautogui>=0.9.54',
     'pillow>=12.3.0',
     'opencv-python>=5.0.0.93',
-    'codeallybasic>=1.4.0',
+    'codeallybasic>=1.40.0',
 ]
 
 [project.optional-dependencies]

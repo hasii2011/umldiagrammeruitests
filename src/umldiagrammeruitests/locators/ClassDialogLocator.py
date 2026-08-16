@@ -7,7 +7,7 @@ from pathlib import Path
 from codeallybasic.ResourceManager import ResourceManager
 
 from umldiagrammeruitests.locators.BaseLocator import BaseLocator
-from umldiagrammeruitests.locators.BaseLocator import LOCATE_CONFIDENCE
+
 from umldiagrammeruitests.locators.BaseLocator import Location
 
 # noinspection SpellCheckingInspection
@@ -15,8 +15,10 @@ PACKAGE_NAME:  str = 'umldiagrammeruitests.resources.checkclassimages'
 # noinspection SpellCheckingInspection
 RESOURCE_PATH: str = 'umldiagrammeruitests/resources/checkclassimages'
 
+LOCATE_CONFIDENCE: float = 0.90
+
 class ClassDialogLocator(BaseLocator):
-    def __init__(self, confidence: float = LOCATE_CONFIDENCE):
+    def __init__(self, confidence: float = LOCATE_CONFIDENCE, grayScale: bool = False):
         """
 
         Args:
@@ -29,7 +31,7 @@ class ClassDialogLocator(BaseLocator):
             packageName=PACKAGE_NAME
         )
 
-        super().__init__(confidence=confidence, resourcePath=resourcePath)
+        super().__init__(confidence=confidence, grayScale=grayScale, resourcePath=resourcePath)
 
         self.logger.info(f'Location Confidence: {self._confidence}')
 

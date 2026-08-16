@@ -17,7 +17,7 @@ class ToolBarIconLocator(BaseLocator):
     """
     Locates toolbar icon images on screen.
     """
-    def __init__(self, confidence: float = LOCATE_CONFIDENCE):
+    def __init__(self, confidence: float = LOCATE_CONFIDENCE, grayScale: bool = True):
         """
 
         Args:
@@ -25,7 +25,7 @@ class ToolBarIconLocator(BaseLocator):
         """
         resourcePath = ResourceManager.computeResourcePath(resourcePath=RESOURCE_PATH, packageName=PACKAGE_NAME)
 
-        super().__init__(confidence=confidence, resourcePath=resourcePath)
+        super().__init__(confidence=confidence, grayScale=grayScale, resourcePath=resourcePath)
         self.logger: Logger = getLogger(__name__)
 
         self.logger.info(f'Location Confidence: {self._confidence}')
