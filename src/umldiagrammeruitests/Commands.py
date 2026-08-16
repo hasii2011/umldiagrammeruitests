@@ -27,7 +27,7 @@ from umldiagrammeruitests.InheritanceVerifier import InheritanceVerifier
 
 from umldiagrammeruitests.Common import PAUSE_AFTER_EACH_CALL
 
-from umldiagrammeruitests.commands.Environment import Environment
+from umldiagrammeruitests.verifiers.Environment import Environment
 
 RESOURCES_PACKAGE_NAME:       str = 'umldiagrammeruitests.resources'
 JSON_LOGGING_CONFIG_FILENAME: str = 'loggingConfiguration.json'
