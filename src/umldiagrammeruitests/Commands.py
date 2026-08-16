@@ -21,9 +21,9 @@ from click import ClickException
 
 from pyautogui import ImageNotFoundException
 
-from umldiagrammeruitests.AggregationVerifier import AggregationVerifier
-from umldiagrammeruitests.CompositionVerifier import CompositionVerifier
-from umldiagrammeruitests.InheritanceVerifier import InheritanceVerifier
+from umldiagrammeruitests.verifiers.AggregationVerifier import AggregationVerifier
+from umldiagrammeruitests.verifiers.CompositionVerifier import CompositionVerifier
+from umldiagrammeruitests.verifiers.InheritanceVerifier import InheritanceVerifier
 
 from umldiagrammeruitests.Common import PAUSE_AFTER_EACH_CALL
 

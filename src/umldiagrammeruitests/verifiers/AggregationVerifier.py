@@ -6,7 +6,7 @@ from pathlib import Path
 
 from pyautogui import click
 
-from umldiagrammeruitests.BaseVerifier import BaseVerifier
+from umldiagrammeruitests.verifiers.BaseVerifier import BaseVerifier
 from umldiagrammeruitests.locators.BaseLocator import Location
 
 #

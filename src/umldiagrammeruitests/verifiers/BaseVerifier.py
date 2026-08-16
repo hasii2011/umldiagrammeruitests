@@ -23,7 +23,7 @@ from pymsgbox import alert
 
 from click import ClickException
 
-from umldiagrammeruitests.AbstractVerifier import AbstractVerifier
+from umldiagrammeruitests.verifiers.AbstractVerifier import AbstractVerifier
 
 from umldiagrammeruitests.Common import BACKSPACES_CLEAR_CLASS_NAME
 from umldiagrammeruitests.Common import MOVE_TO_DELAY
