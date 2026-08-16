@@ -103,6 +103,28 @@ class BaseTest(AbstractTest):
         press(keys='backspace', presses=BACKSPACES_CLEAR_CLASS_NAME)
         typewrite(newClassName)
 
+    def _verifyTest(self, projectFileName: Path, decompressedProjectFileName: Path, goldenXml: str) -> bool:
+        """
+        Verifies the generated XML against the golden XML and displays the result dialog.
+
+        Args:
+            projectFileName:             The path to the generated test project
+            decompressedProjectFileName: Where we decompress the project to
+            goldenXml:                   The expected Golden XML
+
+        Returns:
+            True if the test succeeded, False otherwise
+        """
+        testSuccessful: bool = self._wasTestSuccessful(
+            projectFileName=projectFileName,
+            decompressedProjectFileName=decompressedProjectFileName,
+            goldenXml=goldenXml
+        )
+
+        self._displayAppropriateDialog(status=testSuccessful)
+
+        return testSuccessful
+
     def _wasTestSuccessful(self, projectFileName: Path, decompressedProjectFileName: Path, goldenXml: str) -> bool:
         """
 

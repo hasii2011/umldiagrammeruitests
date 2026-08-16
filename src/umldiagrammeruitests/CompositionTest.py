@@ -72,10 +72,8 @@ class CompositionTest(BaseTest):
 
         self._saveAsProject.execute(projectFileName=str(COMPOSITION_PROJECT_FILENAME))
 
-        success: bool = self._wasTestSuccessful(
+        self._verifyTest(
             projectFileName=COMPOSITION_PROJECT_FILENAME,
             decompressedProjectFileName=DECOMPRESSED_COMPOSITION_PROJECT,
             goldenXml=GOLDEN_COMPOSITION_XML
         )
-
-        self._displayAppropriateDialog(status=success)

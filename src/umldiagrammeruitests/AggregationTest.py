@@ -74,10 +74,8 @@ class AggregationTest(BaseTest):
 
         self._saveAsProject.execute(projectFileName=str(AGGREGATION_PROJECT_FILENAME))
 
-        success: bool = self._wasTestSuccessful(
+        self._verifyTest(
             projectFileName=AGGREGATION_PROJECT_FILENAME,
             decompressedProjectFileName=DECOMPRESSED_AGGREGATION_PROJECT,
             goldenXml=GOLDEN_AGGREGATION_XML
         )
-
-        self._displayAppropriateDialog(status=success)
