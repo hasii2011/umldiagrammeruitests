@@ -25,6 +25,7 @@ from umldiagrammeruitests.CompositionTest import CompositionTest
 from umldiagrammeruitests.AggregationTest import AggregationTest
 
 from umldiagrammeruitests.Common import PAUSE_AFTER_EACH_CALL
+from umldiagrammeruitests.InheritanceTest import InheritanceTest
 
 from umldiagrammeruitests.commands.Environment import Environment
 
@@ -88,9 +89,11 @@ def uitest(ctx, verbose: bool = False):
 @handleUiTestErrors
 def inheritance(environment: Environment):
     """
-    Signs the internal python zipfile;  May optionally remove some bad files in test/zipimport_data
+    Execute the create an inheritance relationship test
     """
-    secho(f'I am here -- {environment=}')
+    secho(f'{environment}')     # temp until we start using it
+    inheritanceTest: InheritanceTest = InheritanceTest()
+    inheritanceTest.execute()
 
 
 @uitest.command(name='composition')
@@ -98,8 +101,9 @@ def inheritance(environment: Environment):
 @handleUiTestErrors
 def composition(environment: Environment):
     """
-    Execute the create a composition test
+    Execute the create a composition relationship test
     """
+    secho(f'{environment}')     # temp until we start using it
     compositionTest: CompositionTest = CompositionTest()
     compositionTest.execute()
 
@@ -108,8 +112,9 @@ def composition(environment: Environment):
 @handleUiTestErrors
 def aggregation(environment: Environment):
     """
-    Execute the create an aggregation test
+    Execute the create an aggregation relationship test
     """
+    secho(f'{environment}')     # temp until we start using it
     aggregationTest: AggregationTest = AggregationTest()
     aggregationTest.execute()
 
