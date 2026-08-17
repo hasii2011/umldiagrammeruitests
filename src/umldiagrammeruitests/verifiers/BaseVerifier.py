@@ -1,3 +1,4 @@
+from typing import Iterator
 from typing import List
 
 from logging import Logger
@@ -9,19 +10,19 @@ from re import findall
 from re import sub as regExSub
 
 from difflib import unified_diff
-from typing import Tuple
 
 from zlib import decompress
 
+from click import clear
 from click import secho
+from click import ClickException
+
 from pyautogui import click
 from pyautogui import moveTo
 from pyautogui import press
 from pyautogui import typewrite
 
 from pymsgbox import alert
-
-from click import ClickException
 
 from umldiagrammeruitests.verifiers.AbstractVerifier import AbstractVerifier
 
@@ -152,10 +153,7 @@ class BaseVerifier(AbstractVerifier):
                 fromfile='Golden',
                 tofile='Generated'
             )
-            almond: Tuple = (239, 222, 205)
-            darkPowderBlue:  Tuple = (0, 48, 143)
-            diffText: str = '\n'.join(list(diff))
-            secho(diffText, fg=darkPowderBlue, bg=almond)
+            self._prettyPrintDiffs(diff)
             answer = False
 
         return answer
@@ -219,3 +217,23 @@ class BaseVerifier(AbstractVerifier):
             assert False, 'Developer error'
 
         alert(text=message, title=title, button='OK')
+
+    def _prettyPrintDiffs(self, diff: Iterator[str]):
+        """
+        I like my Gemini 3.7 flash generated code !!
+
+        Args:
+            diff:  The return value from a call to unified_diff
+
+        """
+        clear()
+        secho('--- XML Differences (Golden vs Generated) ---', fg='yellow', bold=True)
+        for diffLine in diff:
+            if diffLine.startswith('+'):
+                secho(diffLine, fg='green')
+            elif diffLine.startswith('-'):
+                secho(diffLine, fg='red')
+            elif diffLine.startswith('@'):
+                secho(diffLine, fg='cyan')
+            else:
+                secho(diffLine, fg='black')

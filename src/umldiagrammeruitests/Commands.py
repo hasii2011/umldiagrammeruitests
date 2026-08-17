@@ -21,7 +21,9 @@ from click import ClickException
 
 from pyautogui import ImageNotFoundException
 
+from umldiagrammeruitests._version import __version__
 from umldiagrammeruitests.verifiers.AggregationVerifier import AggregationVerifier
+from umldiagrammeruitests.verifiers.BasicClassVerifier import BasicClassVerifier
 from umldiagrammeruitests.verifiers.CompositionVerifier import CompositionVerifier
 from umldiagrammeruitests.verifiers.InheritanceVerifier import InheritanceVerifier
 
@@ -32,7 +34,6 @@ from umldiagrammeruitests.verifiers.Environment import Environment
 RESOURCES_PACKAGE_NAME:       str = 'umldiagrammeruitests.resources'
 JSON_LOGGING_CONFIG_FILENAME: str = 'loggingConfiguration.json'
 
-__version__: str = '0.6'
 
 def setUpLogging():
     """
@@ -64,13 +65,7 @@ def handleUiTestErrors(func: Callable[..., Any]) -> Callable[..., Any]:
 @pass_context
 def uitest(ctx, verbose: bool = False):
     """
-    \b
-
-    \b
-
-    \b
-
-    \b
+    The UML Diagrammer UI Test driver
     """
     setUpLogging()
 
@@ -119,14 +114,16 @@ def aggregation(environment: Environment):
     aggregationVerifier.execute()
 
 
-@uitest.command(name='checkClass')
+@uitest.command(name='basicClass')
 @pass_obj
 @handleUiTestErrors
-def checkClass(environment: Environment):
+def basicClass(environment: Environment):
     """
-    Signs the internal python zipfile;  May optionally remove some bad files in test/zipimport_data
+    Execute the a test for basic class creation
     """
-    secho(f'I am here -- {environment=}')
+    secho(f'{environment}')     # temp until we start using it
+    basicClassVerifier: BasicClassVerifier = BasicClassVerifier()
+    basicClassVerifier.execute()
 
 
 if __name__ == '__main__':
