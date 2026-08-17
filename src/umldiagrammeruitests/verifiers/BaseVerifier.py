@@ -186,7 +186,7 @@ class BaseVerifier(AbstractVerifier):
 
         Args:
             xmlToFix:           The raw generated XML from a test
-            patternToMatch:     The find regex pattern that let's us remove unique IDs and names
+            patternToMatch:     The regex pattern that lets us remove unique IDs and names
 
         Returns:  The 'sanitized' XML
 

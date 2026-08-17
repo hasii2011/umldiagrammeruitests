@@ -92,9 +92,8 @@ class SaveAsProject:
 
     def _hackMethodToTypeInPathName(self, projectFileName: str):
         """
-        PyAutoGUI's keyboard emulation is fatally corrupted by this point in checkClass.py.
-        Bypass it entirely and use macOS native AppleScript to type the string.
-
+        Uses native macOS AppleScript to send keystrokes directly to the dialog,
+        bypassing PyAutoGUI character encoding limitations.
         """
         applescript: str = f'{APPLE_SCRIPT_SEND_KEYSTROKES} "{projectFileName}"'
 

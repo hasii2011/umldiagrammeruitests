@@ -37,6 +37,7 @@ JSON_LOGGING_CONFIG_FILENAME: str = 'loggingConfiguration.json'
 
 def setUpLogging():
     """
+    Configures logging handlers from the package configuration JSON.
     """
     traversable: Traversable = files(RESOURCES_PACKAGE_NAME) / JSON_LOGGING_CONFIG_FILENAME
 
@@ -119,7 +120,7 @@ def aggregation(environment: Environment):
 @handleUiTestErrors
 def basicClass(environment: Environment):
     """
-    Execute the a test for basic class creation
+    Execute the test for basic class creation
     """
     secho(f'{environment}')     # temp until we start using it
     basicClassVerifier: BasicClassVerifier = BasicClassVerifier()
