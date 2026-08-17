@@ -1,40 +1,30 @@
-
-[![PyPI version](https://badge.fury.io/py/umldiagrammeruitests.svg)](https://badge.fury.io/py/umldiagrammeruitests)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
+[![PyPI version](https://badge.fury.io/py/umldiagrammeruitests.svg)](https://badge.fury.io/py/umldiagrammeruitests)[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
 
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
 
 # UI Test Automation Suite
 
-This directory contains a suite of UI automation tests for the UML Diagrammer application. These tests use the `pyautogui` library to simulate user interactions and verify the correctness of the application's behavior.
+This project contains a suite of UI automation tests for the UML Diagrammer application. These tests use the `pyautogui` library to simulate user interactions and verify the correctness of the application's behavior.
 
-## Test Scripts
+## Test CLI
 
-The main test scripts are:
+Currently, this project supports the following tests:
 
-- **`CheckAggregation.py`**: This test automates the creation of a UML aggregation relationship between two classes. It verifies that the resulting project file contains the correct XML structure for the aggregation.
-- **`CheckClass.py`**: This test automates the creation of a UML class, including adding methods and fields. It verifies that the class is created with the correct properties and that the project file is saved correctly.
-- **`CheckComposition.py`**: This test automates the creation of a UML composition relationship between two classes. It verifies that the resulting project file contains the correct XML structure for the composition.
-- **`CheckInheritance.py`**: This test automates the creation of a UML inheritance relationship between two classes. It verifies that the resulting project file contains the correct XML structure for the inheritance.
+```
+Usage: uitest [OPTIONS] COMMAND [ARGS]...
 
-Each of these test scripts performs the following steps:
-1. Checks if the UML Diagrammer application is running.
-2. Activates the application window.
-3. Simulates user clicks and keyboard input to create UML elements.
-4. Saves the created diagram as a project file (`.udt`).
-5. Decompresses the project file (which is zlib compressed) to get the raw XML data.
-6. Compares the generated XML with a "golden" XML string defined within the script. This comparison ignores unique IDs to focus on the structural correctness of the XML.
-7. Displays a success or failure message to the user.
+  The UML Diagrammer UI Test driver
 
-## Common Library
+Options:
+  --version  Show the version and exit.
+  --help     Show this message and exit.
 
-- **`Common.py`**: This file contains a library of helper functions used by the test scripts. These functions encapsulate common tasks such as:
-    - Checking if the application is running.
-    - Activating the application window.
-    - Saving a project.
-    - Decompressing project files.
-    - Comparing generated XML with a golden version.
-    - Displaying test results.
+Commands:
+  aggregation  Execute the create an aggregation relationship test
+  basicClass   Execute the test for basic class creation
+  composition  Execute the create a composition relationship test
+  inheritance  Execute the create an inheritance relationship test
+```
 
 ## Utility Scripts
 
@@ -43,38 +33,25 @@ Each of these test scripts performs the following steps:
 
 ## Running the Tests
 
-To run these tests, you need to have the UML Diagrammer application running. Then, you can execute each test script from your terminal. For example:
+To run these tests, you need to have the UML Diagrammer application running. Then, you can execute each test from your terminal. For example:
 
 ```bash
-
-# from the project root
-cd tests/uitests
-uv run CheckClass.py
-uv run CheckAggregation.py
-uv run CheckComposition.py
-uv run CheckInheritance.py
-
+# Run a specific UI test
+uitest aggregation
+uitest basicClass
+uitest composition
+uitest inheritance
 ```
 
 **Prerequisites**
 
-These tests are highly dependent on screen resolution and window placement. 
+The debug section in `umlDiagrammer.ini` must use the following values:
 
--   Screen size of width=2560, height=1440
--   Tool bar icon size should be set to Medium 24
--   The toolbar is on top
--   tkinter (`brew instal python-tk`)
-
-
-The debug section in umlDiagrammer.ini uses the following values:
-
-```
+```ini
 [Debug]
 inTestMode = True
 testPosition = 20,40
 testSize = 1247,842
-```
-
 ```
 
 # Installation
@@ -87,11 +64,9 @@ ___
 
 Written by <a href="mailto:humberto.a.sanchez.ii@gmail.com?subject=Hello Humberto">Humberto A. Sanchez II</a>  (C) 2026
 
-
 ## Note
-For all kind of problems, requests, enhancements, bug reports, etc.,
-please drop me an e-mail.
-
+For all kinds of problems, requests, enhancements, bug reports, etc., please drop me an e-mail.
 
 ------
 [Copilot Statement](https://github.com/hasii2011/code-ally-basic/wiki/GitHub-Copilot).
+
