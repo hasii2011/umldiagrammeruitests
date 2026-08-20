@@ -5,13 +5,15 @@ from logging import getLogger
 from codeallybasic.ResourceManager import ResourceManager
 
 from umldiagrammeruitests.locators.BaseLocator import BaseLocator
-from umldiagrammeruitests.locators.BaseLocator import LOCATE_CONFIDENCE
 from umldiagrammeruitests.locators.BaseLocator import Location
 
 # noinspection SpellCheckingInspection
 PACKAGE_NAME:  str = 'umldiagrammeruitests.resources.toolbaricons'
 # noinspection SpellCheckingInspection
 RESOURCE_PATH: str = 'umldiagrammeruitests/resources/toolbaricons'
+
+LOCATE_CONFIDENCE: float = 0.90
+
 
 class ToolBarIconLocator(BaseLocator):
     """

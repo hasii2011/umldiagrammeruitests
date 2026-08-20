@@ -24,6 +24,7 @@ from pyautogui import typewrite
 
 from pymsgbox import alert
 
+from umldiagrammeruitests.locators.CommonImageLocator import CommonImageLocator
 from umldiagrammeruitests.verifiers.AbstractVerifier import AbstractVerifier
 
 from umldiagrammeruitests.Common import BACKSPACES_CLEAR_CLASS_NAME
@@ -56,7 +57,12 @@ class BaseVerifier(AbstractVerifier):
         self._umlClassLocator:    UmlClassLocator    = UmlClassLocator()
         self._classDialogLocator: ClassDialogLocator = ClassDialogLocator()
         self._toolBarClicker:     ToolBarClicker     = ToolBarClicker()
-        self._saveAsProject:      SaveAsProject      = SaveAsProject()
+        self._commonImageLocator: CommonImageLocator = CommonImageLocator()
+
+        self._saveAsProject: SaveAsProject = SaveAsProject(
+            toolBarClicker=self._toolBarClicker,
+            commonImageLocator=self._commonImageLocator
+        )
 
     def execute(self):
 

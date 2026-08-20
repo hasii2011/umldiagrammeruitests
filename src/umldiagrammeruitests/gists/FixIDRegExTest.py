@@ -1,0 +1,42 @@
+#!/usr/bin/env python
+# /// script
+# dependencies = ['pillow', 'umlshapes', 'pyautogui']
+# ///
+
+from typing import List
+
+from pathlib import Path
+
+from re import findall
+from re import sub as regExSub
+
+from umldiagrammeruitests.Common import EMPTY_ID
+from umldiagrammeruitests.Common import ID_NAME_MATCH
+
+
+def runComparison(xmlToFix: str, patternToMatch: str) -> str:
+    """
+
+    Args:
+        xmlToFix:
+        patternToMatch:
+
+    Returns:
+
+    """
+    matchList: List[str] = findall(patternToMatch, xmlToFix)
+
+    correctedXml: str = xmlToFix
+    for matchedIdStr in matchList:
+        correctedXml = regExSub(pattern=matchedIdStr, repl=EMPTY_ID, string=correctedXml)
+
+    return correctedXml
+
+
+if __name__ == '__main__':
+
+    generatedXmlFile: Path = Path('/tmp/AggregationTest.xml')
+    generatedXml: str = generatedXmlFile.read_text()
+
+    fixedXml: str = runComparison(xmlToFix=generatedXml, patternToMatch=ID_NAME_MATCH)
+    print(fixedXml)

@@ -50,6 +50,11 @@ where = ['src']
 [tool.setuptools.dynamic]
 version = {attr = 'umldiagrammeruitests.__version__'}
 
+[dependency-groups]
+dev = [
+    'ty>=0.0.72',
+]
+
 [project.scripts]
 # Exposes the 'uitest' group from Commands.py as a CLI
 uitest = 'umldiagrammeruitests.Commands:uitest'

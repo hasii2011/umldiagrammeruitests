@@ -36,12 +36,18 @@ class SaveAsProject:
     combos that trigger system shortcuts.
 
     """
-    def __init__(self):
+    def __init__(self, toolBarClicker: ToolBarClicker, commonImageLocator: CommonImageLocator):
+        """
+
+        Args:
+            toolBarClicker:
+            commonImageLocator:
+        """
 
         self.logger: Logger = getLogger(__name__)
 
-        self._commonImageLocator: CommonImageLocator = CommonImageLocator()
-        self._toolBarClicker:     ToolBarClicker     = ToolBarClicker()
+        self._toolBarClicker:     ToolBarClicker     = toolBarClicker
+        self._commonImageLocator: CommonImageLocator = commonImageLocator
 
     def execute(self, projectFileName: str):
 

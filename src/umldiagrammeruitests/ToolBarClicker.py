@@ -20,6 +20,10 @@ class ToolBarClicker:
         location: Location = self._iconLocator.newClass
         click(x=location.x,   y=location.y)
 
+    def clickNewNote(self):
+        location: Location = self._iconLocator.newNote
+        click(x=location.x, y=location.y)
+
     def clickAggregation(self):
         """
         Click on the Aggregation Link Icon
@@ -37,4 +41,8 @@ class ToolBarClicker:
 
     def clickSaveProject(self):
         location: Location = self._iconLocator.saveProject
+        click(x=location.x, y=location.y)
+
+    def clickNoteLink(self):
+        location: Location = self._iconLocator.noteLink
         click(x=location.x, y=location.y)

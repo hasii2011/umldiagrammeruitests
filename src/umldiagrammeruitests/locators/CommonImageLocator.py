@@ -39,3 +39,19 @@ class CommonImageLocator(BaseLocator):
     @property
     def saveProjectAsButton(self) -> Location:
         return self._locate('SaveProjectAsButton.png')
+
+    @property
+    def defaultNoteText(self) -> Location:
+        return self._locate('DefaultNoteText.png')
+
+    @property
+    def okButton(self) -> Location:
+        return self._locate('OkButton.png')
+
+    @property
+    def classWithNote(self) -> Location:
+        return self._locate('ClassWithNote.png')
+
+    @property
+    def uiTestNote(self) -> Location:
+        return self._locate('UITestNote.png')

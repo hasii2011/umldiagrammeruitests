@@ -24,6 +24,8 @@ Commands:
   basicClass   Execute the test for basic class creation
   composition  Execute the create a composition relationship test
   inheritance  Execute the create an inheritance relationship test
+  noteLink     Execute the create a Uml Note link relationship test
+  
 ```
 
 ## Utility Scripts
@@ -41,6 +43,7 @@ uitest aggregation
 uitest basicClass
 uitest composition
 uitest inheritance
+uitest noteLink
 ```
 
 **Prerequisites**
@@ -51,7 +54,7 @@ The debug section in `umlDiagrammer.ini` must use the following values:
 [Debug]
 inTestMode = True
 testPosition = 20,40
-testSize = 1247,842
+testSize = 1247,950
 ```
 
 # Installation

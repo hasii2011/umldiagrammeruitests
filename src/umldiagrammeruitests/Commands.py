@@ -30,6 +30,7 @@ from umldiagrammeruitests.verifiers.InheritanceVerifier import InheritanceVerifi
 from umldiagrammeruitests.Common import PAUSE_AFTER_EACH_CALL
 
 from umldiagrammeruitests.verifiers.Environment import Environment
+from umldiagrammeruitests.verifiers.NoteLinkVerifier import NoteLinkVerifier
 
 RESOURCES_PACKAGE_NAME:       str = 'umldiagrammeruitests.resources'
 JSON_LOGGING_CONFIG_FILENAME: str = 'loggingConfiguration.json'
@@ -125,6 +126,17 @@ def basicClass(environment: Environment):
     secho(f'{environment}')     # temp until we start using it
     basicClassVerifier: BasicClassVerifier = BasicClassVerifier()
     basicClassVerifier.execute()
+
+@uitest.command(name='noteLink')
+@pass_obj
+@handleUiTestErrors
+def noteLink(environment: Environment):
+    """
+    Execute the create a Uml Note link relationship test
+    """
+    secho(f'{environment}')     # temp until we start using it
+    noteLinkVerifier: NoteLinkVerifier = NoteLinkVerifier()
+    noteLinkVerifier.execute()
 
 
 if __name__ == '__main__':
