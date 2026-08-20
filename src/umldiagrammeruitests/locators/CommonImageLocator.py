@@ -55,3 +55,11 @@ class CommonImageLocator(BaseLocator):
     @property
     def uiTestNote(self) -> Location:
         return self._locate('UITestNote.png')
+
+    @property
+    def interfaceClass(self) -> Location:
+        return self._locate('InterfaceClass.png')
+
+    @property
+    def implementorClass(self) -> Location:
+        return self._locate('ImplementorClass.png')

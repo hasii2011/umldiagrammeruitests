@@ -24,6 +24,7 @@ Commands:
   basicClass   Execute the test for basic class creation
   composition  Execute the create a composition relationship test
   inheritance  Execute the create an inheritance relationship test
+  interface    Execute the create an implement interface test
   noteLink     Execute the create a Uml Note link relationship test
   
 ```
@@ -43,6 +44,7 @@ uitest aggregation
 uitest basicClass
 uitest composition
 uitest inheritance
+uitest interface
 uitest noteLink
 ```
 

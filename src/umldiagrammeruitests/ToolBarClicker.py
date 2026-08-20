@@ -46,3 +46,7 @@ class ToolBarClicker:
     def clickNoteLink(self):
         location: Location = self._iconLocator.noteLink
         click(x=location.x, y=location.y)
+
+    def clickInterface(self):
+        location: Location = self._iconLocator.interfaceLink
+        click(x=location.x, y=location.y)
