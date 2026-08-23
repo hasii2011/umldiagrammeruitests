@@ -24,6 +24,7 @@ from pyautogui import ImageNotFoundException
 from umldiagrammeruitests._version import __version__
 from umldiagrammeruitests.verifiers.AggregationVerifier import AggregationVerifier
 from umldiagrammeruitests.verifiers.BasicClassVerifier import BasicClassVerifier
+from umldiagrammeruitests.verifiers.ClassOptionsVerifier import ClassOptionsVerifier
 from umldiagrammeruitests.verifiers.CompositionVerifier import CompositionVerifier
 from umldiagrammeruitests.verifiers.InheritanceVerifier import InheritanceVerifier
 
@@ -152,7 +153,19 @@ def interface(environment: Environment):
     interfaceVerifier.execute()
 
 
+@uitest.command(name='classOptions')
+@pass_obj
+@handleUiTestErrors
+def classOptions(environment: Environment):
+    """
+    Execute test to check class display options
+    """
+    secho(f'{environment}')     # temp until we start using it
+    classOptionsVerifier: ClassOptionsVerifier = ClassOptionsVerifier()
+    classOptionsVerifier.execute()
+
+
 if __name__ == '__main__':
     # noinspection SpellCheckingInspection
 
-    uitest(['aggregation'])
+    uitest(['classOptions'])

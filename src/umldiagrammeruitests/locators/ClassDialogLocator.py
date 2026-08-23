@@ -86,3 +86,39 @@ class ClassDialogLocator(BaseLocator):
     @property
     def classShapeContextMenu(self) -> Location:
         return self._locate('ClassShapeContextMenu.png')
+
+    @property
+    def showFieldsCheckBox(self) -> Location:
+        return self._locate('ShowFieldsCheckBox.png')
+
+    @property
+    def showMethodsCheckBox(self) -> Location:
+        return self._locate('ShowMethodsCheckBox.png')
+
+    @property
+    def showStereotypeCheckBox(self) -> Location:
+        return self._locate('ShowStereotypeCheckBox.png')
+
+    @property
+    def descriptionButton(self) -> Location:
+        return self._locate('DescriptionButton.png')
+
+    @property
+    def descriptionTextBox(self) -> Location:
+        return self._locate('DescriptionTextBox.png')
+
+    @property
+    def descriptionOkButton(self) -> Location:
+        return self._locate('DescriptionOkButton.png')
+
+    @property
+    def stereoTypeButton(self) -> Location:
+        return self._locate('StereoTypeButton.png')
+
+    @property
+    def threadStereoTypeSelection(self) -> Location:
+        return self._locate('ThreadStereoTypeSelection.png')
+
+    @property
+    def stereotypeOkButton(self) -> Location:
+        return self._locate('StereotypeOkButton.png')
