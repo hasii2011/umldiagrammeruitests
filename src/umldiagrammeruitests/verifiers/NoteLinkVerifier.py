@@ -18,7 +18,7 @@ GOLDEN_NOTE_LINK_XML: str = (
     '<UmlProject fileName="/private/tmp/notelinktest.udt" version="14.0" codePath=".">\n'
     '    <UMLDiagram documentType="Class Document" title="Class Diagram" scrollPositionX="0" scrollPositionY="0" pixelsPerUnitX="20" pixelsPerUnitY="20">\n'
     '        <UmlClass id="" width="112" height="90" x="224" y="97">\n'
-    '            <ModelClass id="" name="ClassWithNote" displayMethods="True" displayParameters="Unspecified" displayConstructor="Unspecified" displayDunderMethods="Unspecified" displayFields="True" displayStereotype="True" fileName="" description="" />\n'
+    '            <ModelClass id="" name="ClassWithNote" stereotype="noStereotype" displayMethods="True" displayParameters="Unspecified" displayConstructor="Unspecified" displayDunderMethods="Unspecified" displayFields="True" displayStereotype="True" fileName="" description="" />\n'
     '        </UmlClass>\n'
     '        <UmlNote id="" width="150" height="50" x="449" y="547">\n'
     '            <ModelNote id="" content="I am a UI test note" fileName="" />\n'

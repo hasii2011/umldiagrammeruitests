@@ -23,6 +23,7 @@ from pyautogui import ImageNotFoundException
 
 from umldiagrammeruitests._version import __version__
 from umldiagrammeruitests.verifiers.AggregationVerifier import AggregationVerifier
+from umldiagrammeruitests.verifiers.AssociationLabelVerifier import AssociationLabelVerifier
 from umldiagrammeruitests.verifiers.BasicClassVerifier import BasicClassVerifier
 from umldiagrammeruitests.verifiers.ClassOptionsVerifier import ClassOptionsVerifier
 from umldiagrammeruitests.verifiers.CompositionVerifier import CompositionVerifier
@@ -163,6 +164,21 @@ def classOptions(environment: Environment):
     secho(f'{environment}')     # temp until we start using it
     classOptionsVerifier: ClassOptionsVerifier = ClassOptionsVerifier()
     classOptionsVerifier.execute()
+
+
+@uitest.command(name='associationLabels')
+@pass_obj
+@handleUiTestErrors
+def associationLabels(environment: Environment):
+    """
+    Execute tests to check association labels.  This includes
+    * positions
+    * label sizes
+    * label text
+    """
+    secho(f'{environment}')     # temp until we start using it
+    associationLabelVerifier: AssociationLabelVerifier = AssociationLabelVerifier()
+    associationLabelVerifier.execute()
 
 
 if __name__ == '__main__':

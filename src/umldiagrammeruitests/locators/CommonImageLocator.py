@@ -2,6 +2,8 @@
 from logging import Logger
 from logging import getLogger
 
+from pathlib import Path
+
 from codeallybasic.ResourceManager import ResourceManager
 
 from umldiagrammeruitests.locators.BaseLocator import BaseLocator
@@ -25,7 +27,7 @@ class CommonImageLocator(BaseLocator):
         Args:
             confidence:  The confidence level for the look ups
         """
-        resourcePath = ResourceManager.computeResourcePath(resourcePath=RESOURCE_PATH, packageName=PACKAGE_NAME)
+        resourcePath: Path = ResourceManager.computeResourcePath(resourcePath=RESOURCE_PATH, packageName=PACKAGE_NAME)
 
         super().__init__(confidence=confidence, grayScale=grayScale, resourcePath=resourcePath)
         self.logger: Logger = getLogger(__name__)
@@ -63,3 +65,19 @@ class CommonImageLocator(BaseLocator):
     @property
     def implementorClass(self) -> Location:
         return self._locate('ImplementorClass.png')
+
+    @property
+    def destinationCardinality(self) -> Location:
+        return self._locate('DestinationCardinality.png')
+
+    @property
+    def sourceCardinality(self) -> Location:
+        return self._locate('SourceCardinality.png')
+
+    @property
+    def associationLabel(self) -> Location:
+        return self._locate('AssociationLabel.png')
+
+    @property
+    def clickToOpenAssociationDialog(self) -> Location:
+        return self._locate('ClickToOpenAssociationDialog.png')
