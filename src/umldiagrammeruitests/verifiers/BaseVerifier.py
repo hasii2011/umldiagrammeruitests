@@ -1,5 +1,6 @@
-from typing import Iterator
+
 from typing import List
+from typing import Iterator
 
 from logging import Logger
 from logging import getLogger
@@ -24,11 +25,11 @@ from pyautogui import typewrite
 
 from pymsgbox import alert
 
+from umldiagrammeruitests.Common import makeAppActive
 from umldiagrammeruitests.locators.CommonImageLocator import CommonImageLocator
 from umldiagrammeruitests.verifiers.AbstractVerifier import AbstractVerifier
 
 from umldiagrammeruitests.Common import BACKSPACES_CLEAR_CLASS_NAME
-from umldiagrammeruitests.Common import MOVE_TO_DELAY
 from umldiagrammeruitests.SaveAsProject import SaveAsProject
 
 from umldiagrammeruitests.ToolBarClicker import ToolBarClicker
@@ -80,9 +81,10 @@ class BaseVerifier(AbstractVerifier):
         return answer
 
     def _bringUmlDiagrammerToForeground(self):
-        # Make UML Diagrammer Active
-        moveTo(350, 175, duration=MOVE_TO_DELAY)
-        click()
+        """
+        Make UML Diagrammer Active
+        """
+        makeAppActive()
 
     def _createUmlClassPair(self, class1Location: Location, class2Location: Location, class1Name: str, class2Name: str):
 
@@ -153,7 +155,7 @@ class BaseVerifier(AbstractVerifier):
 
         fixedXml: str = self._runComparison(xmlToFix=generatedXml, patternToMatch=ID_NAME_MATCH)
         if fixedXml != goldenXml:
-            diff = unified_diff(
+            diff: Iterator[str] = unified_diff(
                 goldenXml.splitlines(),
                 fixedXml.splitlines(),
                 fromfile='Golden',

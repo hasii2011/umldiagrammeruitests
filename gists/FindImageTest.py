@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # /// script
-# dependencies = ['pillow', 'pyautogui', 'umlshapes', 'opencv-python']
+# dependencies = ['pillow', 'pyautogui', 'opencv-python']
 # ///
 from typing import Any
 from typing import Dict
@@ -19,7 +19,7 @@ from umldiagrammeruitests.Common import setupLogging
 if __name__ == '__main__':
     setupLogging()
     info('Remember.  The image size has to match')
-    info(f'Screen size{size()}')
+    info(f'Screen size{size()}')    # noqa
 
     iconProperties: Dict[str, property] = {}
     for attributeName in dir(ToolBarIconLocator):
@@ -27,7 +27,7 @@ if __name__ == '__main__':
         if isinstance(potentialProperty, property):
             iconProperties[attributeName] = potentialProperty
 
-    debug(f'The icon properties are: {iconProperties}')
+    debug(f'The icon properties are: {iconProperties}')     # noqa
 
     iconLocator: ToolBarIconLocator = ToolBarIconLocator()
     for propName in iconProperties.keys():

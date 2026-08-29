@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # /// script
-# dependencies = ['pillow', 'umlshapes', 'pyautogui']
+# dependencies = ['pillow', 'pyautogui']
 # ///
 
 from typing import List
@@ -39,4 +39,4 @@ if __name__ == '__main__':
     generatedXml: str = generatedXmlFile.read_text()
 
     fixedXml: str = runComparison(xmlToFix=generatedXml, patternToMatch=ID_NAME_MATCH)
-    print(fixedXml)
+    print(fixedXml) # noqa
