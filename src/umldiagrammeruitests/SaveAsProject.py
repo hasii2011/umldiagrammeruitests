@@ -4,25 +4,25 @@ from logging import getLogger
 
 from time import sleep as pySleep
 
-from subprocess import run as subProcessRun
-
+from click import secho
 from pyautogui import click
 from pyautogui import hotkey
 from pyautogui import keyUp
 from pyautogui import press
 
+from umldiagrammeruitests.MacOsTypeWriteHandler import MacOsTypeWriteHandler
 from umldiagrammeruitests.ToolBarClicker import ToolBarClicker
 from umldiagrammeruitests.locators.BaseLocator import Location
 from umldiagrammeruitests.locators.CommonImageLocator import CommonImageLocator
 
-POST_CONFIRM_GOTO_FOLDER_DIALOG = 1.2
+POST_CONFIRM_GOTO_FOLDER_DIALOG: float = 1.2
 
 SAVE_DIALOG_DELAY:               float = 2.0
 SAVE_AS_TEXT_INPUT_FOCUS_DELAY:  float = 0.2
 INVOKE_GOTO_FOLDER_DIALOG_DELAY: float = 0.8
 POST_APPLE_SCRIPT_DELAY:         float = 0.3
 
-APPLE_SCRIPT_SEND_KEYSTROKES: str = 'tell application "System Events" to keystroke'
+
 class SaveAsProject:
     """
     A hacked up set of code generated with help from various AntiGravity
@@ -51,7 +51,7 @@ class SaveAsProject:
 
     def execute(self, projectFileName: str):
 
-        self.logger.info(f'{projectFileName=}')
+        secho(f'projectFileName: {projectFileName}')
         self._releasePotentialStuckModifierKeys()
         self._pressSaveProject()
         self._focusOnTheSaveAsTextInput()
@@ -101,11 +101,7 @@ class SaveAsProject:
         Uses native macOS AppleScript to send keystrokes directly to the dialog,
         bypassing PyAutoGUI character encoding limitations.
         """
-        applescript: str = f'{APPLE_SCRIPT_SEND_KEYSTROKES} "{projectFileName}"'
-
-        subProcessRun(['osascript', '-e', applescript])
-
-        pySleep(POST_APPLE_SCRIPT_DELAY)
+        MacOsTypeWriteHandler.typeWrite(textToWrite=projectFileName)
 
         self._pressReturn()     # Confirm 'Go to Folder' dialog
         pySleep(POST_CONFIRM_GOTO_FOLDER_DIALOG)

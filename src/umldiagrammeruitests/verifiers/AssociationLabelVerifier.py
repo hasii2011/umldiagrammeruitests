@@ -4,8 +4,8 @@ from logging import getLogger
 from pathlib import Path
 
 from click import secho
-from pyautogui import doubleClick
 
+from umldiagrammeruitests.MacOsDoubleClickHandler import MacOsDoubleClickHandler
 from umldiagrammeruitests.locators.BaseLocator import Location
 from umldiagrammeruitests.verifiers.AggregationCreator import AggregationCreator
 
@@ -42,4 +42,4 @@ class AssociationLabelVerifier(AggregationCreator):
         doubleClickY: int = associationLabelCardinalityLocation.y + 25
 
         secho(f'Double click at: ({doubleClickX},{doubleClickY})')
-        doubleClick(x=doubleClickX, y=doubleClickY, interval=0.4)
+        MacOsDoubleClickHandler.doubleClick(x=doubleClickX, y=doubleClickY)
