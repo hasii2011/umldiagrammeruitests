@@ -7,6 +7,7 @@ from pathlib import Path
 from codeallybasic.ResourceManager import ResourceManager
 
 from umldiagrammeruitests.locators.BaseLocator import BaseLocator
+from umldiagrammeruitests.locators.BaseLocator import BoundingBox
 from umldiagrammeruitests.locators.BaseLocator import Location
 
 # noinspection SpellCheckingInspection
@@ -43,3 +44,45 @@ class LinkDialogLocator(BaseLocator):
     @property
     def associationNameTextInput(self) -> Location:
         return self._locate('AssociationNameTextInput.png')
+
+    @property
+    def associationNameLabel(self) -> Location:
+        return self._locate('AssociationNameLabel.png')
+
+    @property
+    def associationNameLabelSelected(self) -> BoundingBox:
+        """
+        We are returning the bounding box of the image !!
+
+        Returns:  A Bounding box
+
+        """
+        return self._locateBoundingBox('AssociationNameLabelSelected.png')
+
+    @property
+    def sourceCardinalityLabel(self) -> Location:
+        return self._locate('SourceCardinalityLabel.png')
+
+    @property
+    def sourceCardinalityLabelSelected(self) -> BoundingBox:
+        """
+        We are returning the bounding box of the image !!
+
+        Returns:  A Bounding box
+        """
+        return self._locateBoundingBox('SourceCardinalityLabelSelected.png')
+
+    @property
+    def destinationCardinalityLabel(self) -> Location:
+        return self._locate('DestinationCardinalityLabel.png')
+
+    @property
+    def destinationCardinalityLabelSelected(self) -> BoundingBox:
+        """
+        We are returning the bounding box of the image !!
+
+        Returns:  A Bounding box
+
+        """
+        return self._locateBoundingBox('DestinationCardinalityLabelSelected.png')
+

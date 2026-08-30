@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # /// script
-# dependencies = ['pillow', 'pyautogui', 'opencv-python']
+# dependencies = ['pillow', 'pyautogui', 'codeallybasic', 'opencv-python']
 # ///
 from typing import Any
 from typing import Dict

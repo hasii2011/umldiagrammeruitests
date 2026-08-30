@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # /// script
-# dependencies = ['pyautogui', 'pillow', 'opencv-python', 'pyperclip']
+# dependencies = ['pyautogui', 'pillow', 'codeallybasic', 'opencv-python', 'pyperclip']
 # ///
 from os import sep as osSep
 

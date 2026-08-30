@@ -2,6 +2,8 @@
 from logging import Logger
 from logging import getLogger
 
+from pathlib import Path
+
 from codeallybasic.ResourceManager import ResourceManager
 
 from umldiagrammeruitests.locators.BaseLocator import BaseLocator
@@ -25,7 +27,7 @@ class ToolBarIconLocator(BaseLocator):
         Args:
             confidence:  The confidence level for the look ups
         """
-        resourcePath = ResourceManager.computeResourcePath(resourcePath=RESOURCE_PATH, packageName=PACKAGE_NAME)
+        resourcePath: Path = ResourceManager.computeResourcePath(resourcePath=RESOURCE_PATH, packageName=PACKAGE_NAME)
 
         super().__init__(confidence=confidence, grayScale=grayScale, resourcePath=resourcePath)
         self.logger: Logger = getLogger(__name__)
@@ -34,56 +36,56 @@ class ToolBarIconLocator(BaseLocator):
 
     @property
     def aggregationLink(self) -> Location:
-        return self._locate(bareFileName='AggregationLink.png')
+        return self._locate(baseFileName='AggregationLink.png')
 
     @property
     def associationLink(self) -> Location:
-        return self._locate(bareFileName='AssociationLink.png')
+        return self._locate(baseFileName='AssociationLink.png')
 
     @property
     def compositionLink(self) -> Location:
-        return self._locate(bareFileName='CompositionLink.png')
+        return self._locate(baseFileName='CompositionLink.png')
 
     @property
     def inheritanceLink(self) -> Location:
-        return self._locate(bareFileName='InheritanceLink.png')
+        return self._locate(baseFileName='InheritanceLink.png')
 
     @property
     def interfaceLink(self) -> Location:
-        return self._locate(bareFileName='InterfaceLink.png')
+        return self._locate(baseFileName='InterfaceLink.png')
 
     @property
     def newActor(self) -> Location:
-        return self._locate(bareFileName='NewActor.png')
+        return self._locate(baseFileName='NewActor.png')
 
     @property
     def newClass(self) -> Location:
-        return self._locate(bareFileName='NewClass.png')
+        return self._locate(baseFileName='NewClass.png')
 
     @property
     def newClassDiagram(self) -> Location:
-        return self._locate(bareFileName='NewClassDiagram.png')
+        return self._locate(baseFileName='NewClassDiagram.png')
 
     @property
     def newNote(self) -> Location:
-        return self._locate(bareFileName='NewNote.png')
+        return self._locate(baseFileName='NewNote.png')
 
     @property
     def newText(self) -> Location:
-        return self._locate(bareFileName='NewText.png')
+        return self._locate(baseFileName='NewText.png')
 
     @property
     def newUseCase(self) -> Location:
-        return self._locate(bareFileName='NewUseCase.png')
+        return self._locate(baseFileName='NewUseCase.png')
 
     @property
     def newUseCaseDiagram(self) -> Location:
-        return self._locate(bareFileName='NewUseCaseDiagram.png')
+        return self._locate(baseFileName='NewUseCaseDiagram.png')
 
     @property
     def noteLink(self) -> Location:
-        return self._locate(bareFileName='NoteLink.png')
+        return self._locate(baseFileName='NoteLink.png')
 
     @property
     def saveProject(self) -> Location:
-        return self._locate(bareFileName='SaveProject.png')
+        return self._locate(baseFileName='SaveProject.png')

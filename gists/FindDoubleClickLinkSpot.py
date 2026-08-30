@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # /// script
-# dependencies = ['pillow', 'pyautogui', 'opencv-python', 'pyobjc-framework-Quartz']
+# dependencies = ['pillow', 'pyautogui', 'codeallybasic', 'opencv-python', 'pyobjc-framework-Quartz']
 # ///
 
 from time import sleep as pySleep

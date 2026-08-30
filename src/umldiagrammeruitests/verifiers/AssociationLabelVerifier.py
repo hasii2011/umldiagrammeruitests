@@ -69,6 +69,10 @@ class AssociationLabelVerifier(AggregationCreator):
         dstCardLocation: Location = self._linkDialogLocator.destinationCardinalityTextInput
         self._changeLinkAttribute(attributeLocation=dstCardLocation, oldName='dst Card', newName='DestinationCardinality')
 
+        okButtonLocation: Location = self._linkDialogLocator.okButton
+        click(okButtonLocation.x, okButtonLocation.y)
+
+
     def _changeLinkAttribute(self, attributeLocation: Location, oldName: str, newName: str):
 
         click(x=attributeLocation.x, y=attributeLocation.y)

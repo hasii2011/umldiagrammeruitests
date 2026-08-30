@@ -37,15 +37,15 @@ class ClassDialogLocator(BaseLocator):
 
     @property
     def classNameTextInput(self) -> Location:
-        return self._locate(bareFileName='ClassNameTextInput.png')
+        return self._locate(baseFileName='ClassNameTextInput.png')
 
     @property
     def addMethodButton(self) -> Location:
-        return self._locate(bareFileName='ClickAddMethod.png')
+        return self._locate(baseFileName='ClickAddMethod.png')
 
     @property
     def addParameterButton(self) -> Location:
-        return self._locate(bareFileName='ClickAddParameter.png')
+        return self._locate(baseFileName='ClickAddParameter.png')
 
     @property
     def parameterNameTextInput(self) -> Location:

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # /// script
-# dependencies = ['pyautogui', 'pillow']
+# dependencies = ['pyautogui', 'pillow', 'codeallybasic']
 # ///
 
 from umldiagrammeruitests.Common import displayAppropriateDialog
