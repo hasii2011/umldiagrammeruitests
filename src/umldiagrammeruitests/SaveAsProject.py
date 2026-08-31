@@ -53,7 +53,7 @@ class SaveAsProject:
 
         secho(f'projectFileName: {projectFileName}')
         self._releasePotentialStuckModifierKeys()
-        self._pressSaveProject()
+        self.pressSaveProject()
         self._focusOnTheSaveAsTextInput()
         self._invokeGoToFolderDialog()
         #
@@ -61,6 +61,17 @@ class SaveAsProject:
         # No need to backspace. The text is highlighted.
         #
         self._hackMethodToTypeInPathName(projectFileName=projectFileName)
+
+    def pressSaveProject(self):
+        """
+        Waits for the Save dialog to fully appear
+        Exposed in case we just need to re-save a modified project
+
+        """
+        self._toolBarClicker.clickSaveProject()
+
+        self.logger.info(f'Wait {SAVE_DIALOG_DELAY} seconds for Save dialog to appear')
+        pySleep(SAVE_DIALOG_DELAY)
 
     def _releasePotentialStuckModifierKeys(self):
         """
@@ -74,15 +85,6 @@ class SaveAsProject:
         keyUp('command')
         keyUp('option')
         keyUp('ctrl')
-
-    def _pressSaveProject(self):
-        """
-        Waits for the Save dialog to fully appear
-        """
-        self._toolBarClicker.clickSaveProject()
-
-        self.logger.info(f'Wait {SAVE_DIALOG_DELAY} seconds for Save dialog to appear')
-        pySleep(SAVE_DIALOG_DELAY)
 
     def _focusOnTheSaveAsTextInput(self):
 
