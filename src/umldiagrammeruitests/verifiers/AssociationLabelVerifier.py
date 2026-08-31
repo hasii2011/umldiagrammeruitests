@@ -72,14 +72,10 @@ class AssociationLabelVerifier(AggregationCreator):
         okButtonLocation: Location = self._linkDialogLocator.okButton
         click(okButtonLocation.x, okButtonLocation.y)
 
-
     def _changeLinkAttribute(self, attributeLocation: Location, oldName: str, newName: str):
 
         click(x=attributeLocation.x, y=attributeLocation.y)
         hotkey('command', 'right')
         press('backspace', len(oldName))
-        # typewrite(message=newName, interval=TYPE_WRITE_INTERVAL)
-        # applescript: str = f'{APPLE_SCRIPT_SEND_KEYSTROKES} "{newName}"'
-        # subProcessRun(['osascript', '-e', applescript])
 
         self._macOsTypeWriteHandler.typeWrite(textToWrite=newName)
