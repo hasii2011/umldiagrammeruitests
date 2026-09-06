@@ -15,7 +15,7 @@ from umldiagrammeruitests.verifiers.BaseVerifier import BaseVerifier
 #
 GOLDEN_NOTE_LINK_XML: str = (
     "<?xml version='1.0' encoding='iso-8859-1'?>\n"
-    '<UmlProject fileName="/private/tmp/notelinktest.udt" version="14.0" codePath=".">\n'
+    '<UmlProject fileName="/private/tmp/NoteLinkTest.udt" version="14.0" codePath=".">\n'
     '    <UMLDiagram documentType="Class Document" title="Class Diagram" scrollPositionX="0" scrollPositionY="0" pixelsPerUnitX="20" pixelsPerUnitY="20">\n'
     '        <UmlClass id="" width="112" height="90" x="224" y="97">\n'
     '            <ModelClass id="" name="ClassWithNote" stereotype="noStereotype" displayMethods="True" displayParameters="Unspecified" displayConstructor="Unspecified" displayDunderMethods="Unspecified" displayFields="True" displayStereotype="True" fileName="" description="" />\n'
@@ -32,7 +32,7 @@ GOLDEN_NOTE_LINK_XML: str = (
 
 WELL_KNOWN_CLASS_NAME: str = 'ClassWithNote'
 
-BASENAME:                         str  = 'notelinktest'
+BASENAME:                         str  = 'NoteLinkTest'
 NOTE_LINK_XML_FILENAME:           str = f'{BASENAME}.xml'
 
 NOTE_LINK_PROJECT_FILENAME:       Path = Path(f'/tmp/{BASENAME}.udt')

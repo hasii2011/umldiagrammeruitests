@@ -153,7 +153,7 @@ class BaseVerifier(AbstractVerifier):
         generatedXmlFile: Path = Path(decompressedProjectFileName)
         generatedXml:     str  = generatedXmlFile.read_text()
 
-        fixedXml: str = self._runComparison(xmlToFix=generatedXml, patternToMatch=ID_NAME_MATCH)
+        fixedXml: str = self._fixXML(xmlToFix=generatedXml, patternToMatch=ID_NAME_MATCH)
         if fixedXml != goldenXml:
             diff: Iterator[str] = unified_diff(
                 goldenXml.splitlines(),
@@ -189,8 +189,9 @@ class BaseVerifier(AbstractVerifier):
         except (ValueError, Exception) as e:
             self.bLogger.error(f'Error:  {e}')
 
-    def _runComparison(self, xmlToFix: str, patternToMatch: str) -> str:
+    def _fixXML(self, xmlToFix: str, patternToMatch: str) -> str:
         """
+        Sanitize dynamic IDs and names in the generated XML for comparison
 
         Args:
             xmlToFix:           The raw generated XML from a test

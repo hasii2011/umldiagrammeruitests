@@ -23,10 +23,10 @@ WELL_KNOWN_CLASS_NAME: str = 'ClassName1'
 #
 GOLDEN_CLASS_XML: str = (
     "<?xml version='1.0' encoding='iso-8859-1'?>\n"
-    '<UmlProject fileName="/private/tmp/uiclasstest.udt" version="14.0" codePath=".">\n'
+    '<UmlProject fileName="/private/tmp/UIClassTest.udt" version="14.0" codePath=".">\n'
     '    <UMLDiagram documentType="Class Document" title="Class Diagram" scrollPositionX="0" scrollPositionY="0" pixelsPerUnitX="20" pixelsPerUnitY="20">\n'
     '        <UmlClass id="" width="325" height="150" x="404" y="267">\n'
-    '            <ModelClass id="" name="ClassName1" displayMethods="True" displayParameters="Display Parameters" displayConstructor="Unspecified" displayDunderMethods="Unspecified" displayFields="True" displayStereotype="True" fileName="" description="">\n'
+    '            <ModelClass id="" name="ClassName1" stereotype="noStereotype" displayMethods="True" displayParameters="Display Parameters" displayConstructor="Unspecified" displayDunderMethods="Unspecified" displayFields="True" displayStereotype="True" fileName="" description="">\n'
     '                <ModelMethod name="MethodName" visibility="PUBLIC" returnType="">\n'
     '                    <SourceCode />\n'
     '                    <ModelParameter name="floatParameter" parameterType="float" defaultValue="42.0" />\n'
@@ -38,7 +38,7 @@ GOLDEN_CLASS_XML: str = (
     '</UmlProject>'
 )
 
-BASENAME:                   str = 'uiclasstest'
+BASENAME:                   str = 'UIClassTest'
 CLASS_XML_FILENAME:         str = f'{BASENAME}.xml'
 
 CLASS_PROJECT_FILENAME:     Path = Path(f'{osSep}tmp{osSep}{BASENAME}.udt')

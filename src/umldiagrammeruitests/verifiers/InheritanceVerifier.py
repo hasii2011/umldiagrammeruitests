@@ -13,7 +13,7 @@ from umldiagrammeruitests.locators.BaseLocator import Location
 #
 GOLDEN_INHERITANCE_XML: str = (
     "<?xml version='1.0' encoding='iso-8859-1'?>\n"
-    '<UmlProject fileName="/private/tmp/inheritancetest.udt" version="14.0" codePath=".">\n'
+    '<UmlProject fileName="/private/tmp/InheritanceTest.udt" version="14.0" codePath=".">\n'
     '    <UMLDiagram documentType="Class Document" title="Class Diagram" scrollPositionX="0" scrollPositionY="0" pixelsPerUnitX="20" pixelsPerUnitY="20">\n'
     '        <UmlClass id="" width="110" height="90" x="124" y="97">\n'
     '            <ModelClass id="" name="TheBaseClass" stereotype="noStereotype" displayMethods="True" displayParameters="Unspecified" displayConstructor="Unspecified" displayDunderMethods="Unspecified" displayFields="True" displayStereotype="True" fileName="" description="" />\n'
@@ -28,7 +28,7 @@ GOLDEN_INHERITANCE_XML: str = (
     '</UmlProject>'
 )
 
-BASENAME:                 str  = 'inheritancetest'
+BASENAME:                 str  = 'InheritanceTest'
 INHERITANCE_XML_FILENAME: str = f'{BASENAME}.xml'
 
 INHERITANCE_PROJECT_FILENAME:     Path = Path(f'/tmp/{BASENAME}.udt')
