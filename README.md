@@ -6,6 +6,12 @@
 
 This project contains a suite of UI automation tests for the UML Diagrammer application. These tests use the `pyautogui` library to simulate user interactions and verify the correctness of the application's behavior.
 
+## Documentation
+
+* 📖 [Read UI Test Suite Description (Markdown)](developer/TestDescription.md)
+* 📄 [View UI Test Suite Description (PDF)](developer/TestDescription.pdf)
+* 📝 [Download editable Word Document (.docx)](developer/TestDescription.docx)
+
 ## Test CLI
 
 Currently, this project supports the following tests:
