@@ -184,4 +184,4 @@ def associationLabels(environment: Environment):
 if __name__ == '__main__':
     # noinspection SpellCheckingInspection
 
-    uitest(['classOptions'])
+    uitest(['associationLabels'])

@@ -25,6 +25,29 @@ from umldiagrammeruitests.locators.LinkDialogLocator import LinkDialogLocator
 
 from umldiagrammeruitests.verifiers.AggregationCreator import AggregationCreator
 
+#
+# Removed the IDs;  Also, removed the ModelLink name
+#
+GOLDEN_ASSOCIATION_LABEL_XML: str = (
+    "<?xml version='1.0' encoding='iso-8859-1'?>\n"
+    '<UmlProject fileName="/private/tmp/AssociationLabelTest.udt" version="14.0" codePath=".">\n'
+    '    <UMLDiagram documentType="Class Document" title="Class Diagram" scrollPositionX="0" scrollPositionY="0" pixelsPerUnitX="20" pixelsPerUnitY="20">\n'
+    '        <UmlClass id="" width="113" height="90" x="199" y="152">\n'
+    '            <ModelClass id="" name="TheAggregator" stereotype="noStereotype" displayMethods="True" displayParameters="Unspecified" displayConstructor="Unspecified" displayDunderMethods="Unspecified" displayFields="True" displayStereotype="True" fileName="" description="" />\n'
+    '        </UmlClass>\n'
+    '        <UmlClass id="" width="88" height="90" x="549" y="447">\n'
+    '            <ModelClass id="" name="Aggregated" stereotype="noStereotype" displayMethods="True" displayParameters="Unspecified" displayConstructor="Unspecified" displayDunderMethods="Unspecified" displayFields="True" displayStereotype="True" fileName="" description="" />\n'
+    '        </UmlClass>\n'
+    '        <UmlLink id="" fromX="307" fromY="242" toX="549" toY="454" spline="False">\n'
+    '            <AssociationName width="136" height="24" deltaX="0" deltaY="0" />\n'
+    '            <SourceCardinality width="146" height="24" deltaX="0" deltaY="0" />\n'
+    '            <DestinationCardinality width="175" height="24" deltaX="0" deltaY="30" />\n'
+    '            <ModelLink name="" type="AGGREGATION" sourceId="" destinationId="" bidirectional="False" sourceCardinalityValue="SourceCardinality" destinationCardinalityValue="DestinationCardinality" />\n'
+    '        </UmlLink>\n'
+    '    </UMLDiagram>\n'
+    '</UmlProject>'
+)
+
 BASENAME:                               str  = 'AssociationLabelTest'
 ASSOCIATION_LABEL_XML_FILENAME:         str = f'{BASENAME}.xml'
 ASSOCIATION_LABEL_PROJECT_FILENAME:     Path = Path(f'/tmp/{BASENAME}.udt')
@@ -103,6 +126,12 @@ class AssociationLabelVerifier(AggregationCreator):
         # the initial save
         #
         self._saveAsProject.pressSaveProject()
+
+        self._verifyTest(
+            projectFileName=ASSOCIATION_LABEL_PROJECT_FILENAME,
+            decompressedProjectFileName=DECOMPRESSED_ASSOCIATION_LABEL_PROJECT,
+            goldenXml=GOLDEN_ASSOCIATION_LABEL_XML
+        )
 
     def _changeLinkAttribute(self, attributeLocation: Location, oldName: str, newName: str):
 

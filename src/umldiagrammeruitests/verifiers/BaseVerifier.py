@@ -25,18 +25,20 @@ from pyautogui import typewrite
 
 from pymsgbox import alert
 
+from umldiagrammeruitests.Common import prettyFormatXML
 from umldiagrammeruitests.Common import makeAppActive
-from umldiagrammeruitests.locators.CommonImageLocator import CommonImageLocator
+from umldiagrammeruitests.Common import BACKSPACES_CLEAR_CLASS_NAME
+
 from umldiagrammeruitests.verifiers.AbstractVerifier import AbstractVerifier
 
-from umldiagrammeruitests.Common import BACKSPACES_CLEAR_CLASS_NAME
 from umldiagrammeruitests.SaveAsProject import SaveAsProject
 
 from umldiagrammeruitests.ToolBarClicker import ToolBarClicker
 
 from umldiagrammeruitests.locators.BaseLocator import Location
-from umldiagrammeruitests.locators.ClassDialogLocator import ClassDialogLocator
 from umldiagrammeruitests.locators.UmlClassLocator import UmlClassLocator
+from umldiagrammeruitests.locators.ClassDialogLocator import ClassDialogLocator
+from umldiagrammeruitests.locators.CommonImageLocator import CommonImageLocator
 
 DIAGRAMMER_IN_TEST_MODE: Path = Path('/tmp/UmlDiagrammer.txt')
 
@@ -201,6 +203,13 @@ class BaseVerifier(AbstractVerifier):
 
         """
         matchList: List[str] = findall(patternToMatch, xmlToFix)
+
+        prettyXml: str = prettyFormatXML(rawXml=xmlToFix)
+        #
+        # Output the raw string directly—allowing newline characters (\n) and indentation spaces
+        # to render as actual line breaks and spacing.
+        #
+        self.bLogger.info(f'prettyXml:\n{prettyXml}')
 
         correctedXml: str = xmlToFix
         for matchedIdStr in matchList:

@@ -28,6 +28,7 @@
         },
         "umldiagrammeruitests": {
             "level": "INFO",
+            "handlers": ["consoleHandler"],
             "propagate": "False"
         }
     }

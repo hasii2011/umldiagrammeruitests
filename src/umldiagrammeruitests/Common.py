@@ -6,6 +6,11 @@ from logging import basicConfig
 
 from pathlib import Path
 
+from xml.etree.ElementTree import indent
+from xml.etree.ElementTree import Element
+from xml.etree.ElementTree import tostring
+from xml.etree.ElementTree import fromstring
+
 from PIL import ImageGrab
 from PIL.Image import Image
 
@@ -106,3 +111,23 @@ def displayAppropriateDialog(status: bool):
         assert False, 'Developer error'
 
     alert(text=message, title=title, button='OK')
+
+def prettyFormatXML(rawXml: str) -> str:
+    """
+    Pretty format an XML string with indentation
+
+    Args:
+        rawXml: The unformatted XML string
+
+    Returns: The indented XML string, or rawXml if parsing fails
+    """
+
+    prettyXml: str = rawXml
+    try:
+        xmlRoot: Element = fromstring(rawXml)
+        indent(tree=xmlRoot, space='    ')
+        prettyXml = tostring(element=xmlRoot, encoding='unicode')
+    except Exception as e:
+        print(f'Failed to pretty format XML: {e}')
+
+    return prettyXml
