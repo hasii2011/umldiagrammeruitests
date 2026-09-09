@@ -209,7 +209,7 @@ class BaseVerifier(AbstractVerifier):
         # Output the raw string directly—allowing newline characters (\n) and indentation spaces
         # to render as actual line breaks and spacing.
         #
-        self.bLogger.info(f'prettyXml:\n{prettyXml}')
+        self.bLogger.debug(f'prettyXml:\n{prettyXml}')
 
         correctedXml: str = xmlToFix
         for matchedIdStr in matchList:
