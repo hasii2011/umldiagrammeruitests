@@ -1,6 +1,7 @@
-[![PyPI version](https://badge.fury.io/py/umldiagrammeruitests.svg)](https://badge.fury.io/py/umldiagrammeruitests)[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
-
-[![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/hasii2011/umldiagrammeruitests/graphs/commit-activity)
+[![PyPI version](https://badge.fury.io/py/umldiagrammeruitests.svg)](https://badge.fury.io/py/umldiagrammeruitests)
+[![Made with Python](https://img.shields.io/badge/Made%20with-Python-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![GitHub Copilot: No](https://img.shields.io/badge/GitHub_Copilot-No-red?logo=github&style=flat-square)](https://github.com/hasii2011/code-ally-basic/wiki/GitHub-Copilot)
 
 # UI Test Automation Suite
 
@@ -79,5 +80,6 @@ Written by <a href="mailto:humberto.a.sanchez.ii@gmail.com?subject=Hello Humbert
 For all kinds of problems, requests, enhancements, bug reports, etc., please drop me an e-mail.
 
 ------
-[Copilot Statement](https://github.com/hasii2011/code-ally-basic/wiki/GitHub-Copilot).
+> [!NOTE]
+> **I do not consent to GitHub's use of this project's code in Copilot.** See our [GitHub Copilot Statement](https://github.com/hasii2011/code-ally-basic/wiki/GitHub-Copilot) for details.
 
