@@ -25,7 +25,7 @@ GOLDEN_CLASS_XML: str = (
     "<?xml version='1.0' encoding='iso-8859-1'?>\n"
     '<UmlProject fileName="/private/tmp/UIClassTest.udt" version="14.0" codePath=".">\n'
     '    <UMLDiagram documentType="Class Document" title="Class Diagram" scrollPositionX="0" scrollPositionY="0" pixelsPerUnitX="20" pixelsPerUnitY="20">\n'
-    '        <UmlClass id="" width="325" height="150" x="404" y="267">\n'
+    '        <UmlClass id="" width="325" height="150" x="444" y="213">\n'
     '            <ModelClass id="" name="ClassName1" stereotype="noStereotype" displayMethods="True" displayParameters="Display Parameters" displayConstructor="Unspecified" displayDunderMethods="Unspecified" displayFields="True" displayStereotype="True" fileName="" description="">\n'
     '                <ModelMethod name="MethodName" visibility="PUBLIC" returnType="">\n'
     '                    <SourceCode />\n'

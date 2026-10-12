@@ -2,6 +2,8 @@
 from logging import Logger
 from logging import getLogger
 
+from pathlib import Path
+
 from codeallybasic.ResourceManager import ResourceManager
 
 from umldiagrammeruitests.locators.BaseLocator import BaseLocator
@@ -22,12 +24,12 @@ class UmlClassLocator(BaseLocator):
         Args:
             confidence:  The confidence level for the look ups
         """
-        resourcePath = ResourceManager.computeResourcePath(resourcePath=RESOURCE_PATH, packageName=PACKAGE_NAME)
+        resourcePath: Path = ResourceManager.computeResourcePath(resourcePath=RESOURCE_PATH, packageName=PACKAGE_NAME)
 
         super().__init__(confidence=confidence, grayScale=grayScale, resourcePath=resourcePath)
         self.logger: Logger = getLogger(__name__)
 
-        self.logger.info(f'Location Confidence: {self._confidence:.2f}')
+        self.logger.debug(f'Location Confidence: {self._confidence:.2f}')
 
     @property
     def aggregator(self) -> Location:

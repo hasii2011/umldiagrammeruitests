@@ -32,15 +32,7 @@ class CommonImageLocator(BaseLocator):
         super().__init__(confidence=confidence, grayScale=grayScale, resourcePath=resourcePath)
         self.logger: Logger = getLogger(__name__)
 
-        self.logger.info(f'Location Confidence: {self._confidence:.2f}')
-
-    @property
-    def saveAsProjectNameTextInput(self) -> Location:
-        return self._locate('SaveAsProjectNameTextInput.png')
-
-    @property
-    def saveProjectAsButton(self) -> Location:
-        return self._locate('SaveProjectAsButton.png')
+        self.logger.debug(f'Location Confidence: {self._confidence:.2f}')
 
     @property
     def defaultNoteText(self) -> Location:
@@ -67,17 +59,6 @@ class CommonImageLocator(BaseLocator):
         return self._locate('ImplementorClass.png')
 
     @property
-    def destinationCardinality(self) -> Location:
-        return self._locate('DestinationCardinality.png')
-
-    @property
-    def sourceCardinality(self) -> Location:
-        return self._locate('SourceCardinality.png')
-
-    @property
     def associationLabel(self) -> Location:
         return self._locate('AssociationLabel.png')
 
-    @property
-    def clickToOpenAssociationDialog(self) -> Location:
-        return self._locate('ClickToOpenAssociationDialog.png')

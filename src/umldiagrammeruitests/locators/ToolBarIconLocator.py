@@ -14,7 +14,7 @@ PACKAGE_NAME:  str = 'umldiagrammeruitests.resources.toolbaricons'
 # noinspection SpellCheckingInspection
 RESOURCE_PATH: str = 'umldiagrammeruitests/resources/toolbaricons'
 
-LOCATE_CONFIDENCE: float = 0.90
+LOCATE_CONFIDENCE: float = 0.98
 
 
 class ToolBarIconLocator(BaseLocator):
@@ -32,7 +32,7 @@ class ToolBarIconLocator(BaseLocator):
         super().__init__(confidence=confidence, grayScale=grayScale, resourcePath=resourcePath)
         self.logger: Logger = getLogger(__name__)
 
-        self.logger.info(f'Location Confidence: {self._confidence:.2f}')
+        self.logger.info(f'ToolBarIconLocator Location Confidence: {self._confidence:.2f}')
 
     @property
     def aggregationLink(self) -> Location:

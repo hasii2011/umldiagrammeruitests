@@ -3,6 +3,7 @@ from logging import Logger
 from logging import getLogger
 
 from pyautogui import click
+from pyautogui import moveTo
 
 from umldiagrammeruitests.locators.BaseLocator import Location
 from umldiagrammeruitests.locators.ToolBarIconLocator import ToolBarIconLocator
@@ -29,6 +30,8 @@ class ToolBarClicker:
         Click on the Aggregation Link Icon
         """
         location: Location = self._iconLocator.aggregationLink
+
+        moveTo(x=location.x, y=location.y, duration=0.5)
         click(x=location.x, y=location.y)
 
     def clickComposition(self):

@@ -63,8 +63,7 @@ class BaseVerifier(AbstractVerifier):
         self._commonImageLocator: CommonImageLocator = CommonImageLocator()
 
         self._saveAsProject: SaveAsProject = SaveAsProject(
-            toolBarClicker=self._toolBarClicker,
-            commonImageLocator=self._commonImageLocator
+            toolBarClicker=self._toolBarClicker
         )
 
     def execute(self):

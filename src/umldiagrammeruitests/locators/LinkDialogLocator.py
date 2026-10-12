@@ -46,10 +46,6 @@ class LinkDialogLocator(BaseLocator):
         return self._locate('AssociationNameTextInput.png')
 
     @property
-    def associationNameLabel(self) -> Location:
-        return self._locate('AssociationNameLabel.png')
-
-    @property
     def associationNameLabelSelected(self) -> BoundingBox:
         """
         We are returning the bounding box of the image !!
