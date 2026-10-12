@@ -7,10 +7,11 @@ name='umldiagrammeruitests'
 dynamic = ["version"]
 description = 'UI Tests for UML Diagrammer'
 readme = "README.md"
-license = 'AGPL-1.0-or-later'
 authors = [{name = 'Humberto A. Sanchez II', email = 'Humberto.A.Sanchez.II@gmail.com'}]
 maintainers = [{name = 'Humberto A. Sanchez II', email = 'Humberto.A.Sanchez.II@gmail.com'}]
 keywords = ['graph, layout, python, uml, test']
+license     = 'AGPL-1.0-or-later'
+license-files = ['LICENSE']
 
 dependencies = [
     'click>=8.4.2',
